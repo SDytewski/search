@@ -1,14 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 
 
 
 function Movielist () {
     const [name, setName] = useState([]);
-    return (
+
+
+    useEffect(() => {
+        names ()
+      }, [])
+ 
+
+
+const names = async () => {
+    const response = await fetch('http://www.omdbapi.com/?i=tt3896198&apikey=32e96066');
+    const data = await response.json();
+     setName(data)
+     console.log(data);
+         
+        
+}
+
+return (
     <div className="App">
-       <div>render the data here</div>
+    
+    
     </div>
+
     );
-    }
+
+}
 
 export default Movielist;
