@@ -4,32 +4,35 @@ import { useState, useEffect } from 'react';
 
 
 function Movielist () {
-    const [name, setName] = useState([]);
+    const [name,setName] = useState(['']);
 
 
-    useEffect(() => {
-        names ()
-      }, [])
- 
+  
 
-
-const names = async () => {
-    const response = await fetch('http://www.omdbapi.com/?i=tt3896198&apikey=32e96066');
-    const data = await response.json();
-     setName(data)
-     console.log(data);
-         
+    const names = async () => {
+        const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
+        const data = await response.json();
         
-}
+        console.log(data);
+        setName(data.Search);
+          
+            
+    }
 
-return (
-    <div className="App">
-    
-    
+        useEffect(() => {
+        names ()
+    }, [])
+
+
+        
+    return (
+        <div className='container-fluid movie-app'>
+        <div className='row'>
+        {name.map((movie, index) => <div key={movie[index]}>{movie.Title}</div>)}
+       
+        </div>
     </div>
-
     );
-
 }
 
 export default Movielist;
