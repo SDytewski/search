@@ -327,9 +327,12 @@ function Starwars() {
 
     }
 
-    function show(item) {
-        const filteredArray = jedi.results.filter((title) => title.name !== character )
+    function show(character) {
+        const filteredArray = jedi.results.filter((e) => e.name !== character )
+        setCharacter(filteredArray)
+        
         console.log(filteredArray)
+        
     }
 
    
@@ -356,7 +359,7 @@ function Starwars() {
                 <button
 
                     alt='search'
-                    onClick={() => show(searchWars)}
+                    onClick={(e) => show(searchWars)}
                 >
                     Search
                 </button>
