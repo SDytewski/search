@@ -10,7 +10,7 @@ function Starwars() {
 
     // setting a string to use for my search term
 
-    var starWars = {
+    var jedi = {
 
         "count": 82,
 
@@ -327,12 +327,19 @@ function Starwars() {
 
     }
 
-    // const filteredArray = starWars.results.filter((item) => item.name !== character)
+    function show(item) {
+        const filteredArray = jedi.results.filter((title) => title.name !== character )
+        console.log(filteredArray)
+    }
 
-    // console.log(filteredArray)
+   
     // setCharacter(filteredArray)
+    // setCharacter(data.Search);
+    // setSearchTerm('')
+    // User types a search in the search box which is equal to my State for searching
+    //That state is tied
 
-    const listItems = starWars.results.map((d) => <li key={d.name}>{d.name}</li>);
+    const listItems = jedi.results.map((d) => <li key={d.name}>{d.name}</li>);
 
 
     return (
@@ -349,7 +356,7 @@ function Starwars() {
                 <button
 
                     alt='search'
-                    onClick={() => starWars(searchWars)}
+                    onClick={() => show(searchWars)}
                 >
                     Search
                 </button>

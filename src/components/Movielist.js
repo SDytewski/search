@@ -45,10 +45,8 @@ function Movielist() {
                 <button
 
                     alt='search'
-                    onClick={() => {
-                        names(searchTerm)
-                       
-                    }}>
+                    onClick={() => names(searchTerm)}
+                    >
                     Search
                 </button>
 
