@@ -327,13 +327,17 @@ function Starwars() {
 
     }
 
-    const filteredArray = starWars.results.filter((item) => item.name !== "Owen Lars")
+    // const filteredArray = starWars.results.filter((item) => item.name !== character)
 
-    console.log(filteredArray)
+    // console.log(filteredArray)
+    // setCharacter(filteredArray)
+
+    const listItems = starWars.results.map((d) => <li key={d.name}>{d.name}</li>);
 
 
     return (
         <div className='container-fluid movie-app'>
+
             <div className='search'>
                 <input
                     placeholder='Search for Characters'
@@ -349,7 +353,9 @@ function Starwars() {
                 >
                     Search
                 </button>
-
+                <div>
+                    {listItems}
+                </div>
 
                 {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             </div>
