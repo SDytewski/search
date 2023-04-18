@@ -331,9 +331,17 @@ function Starwars() {
         const filteredArray = jedi.results.filter((e) => e.name !== character )
         setCharacter(filteredArray)
         
-        console.log(filteredArray)
+        // { return (
+        //     <div>
+              
+        //         <h1>Character</h1>
+        //         <p>{filteredArray}</p>
+              
+        //       </div>
+              
+        // )}
         
-    }
+    
 
    
     // setCharacter(filteredArray)
@@ -342,7 +350,7 @@ function Starwars() {
     // User types a search in the search box which is equal to my State for searching
     //That state is tied
 
-    const listItems = jedi.results.map((d) => <li key={d.name}>{d.name}</li>);
+    // const listItems = jedi.results.map((d) => <li key={d.name}>{d.name}</li>);
 
 
     return (
@@ -350,7 +358,7 @@ function Starwars() {
 
             <div className='search'>
                 <input
-                    placeholder='Search for Characters'
+                    placeholder='Remove a Character'
                     value={searchWars}
                     onChange={(e) => setSearchWars(e.target.value)}
                 />
@@ -363,9 +371,15 @@ function Starwars() {
                 >
                     Search
                 </button>
-                <div>
-                    {listItems}
+                {/* <div>
+            {filteredArray.map((person, index) => (
+                <div key={index}>
+                <h1>{person.name}</h1>
                 </div>
+            ))
+            }
+                   
+                </div> */}
 
                 {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             </div>
@@ -382,6 +396,6 @@ function Starwars() {
         </div>
     );
 }
-
+}
 
 export default Starwars;
