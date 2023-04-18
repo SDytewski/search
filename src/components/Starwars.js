@@ -330,7 +330,8 @@ function Starwars() {
     function show(character) {
         const filteredArray = jedi.results.filter((e) => e.name !== character )
         setCharacter(filteredArray)
-        
+
+            
         // { return (
         //     <div>
               
@@ -341,7 +342,7 @@ function Starwars() {
               
         // )}
         
-    
+    }
 
    
     // setCharacter(filteredArray)
@@ -367,10 +368,30 @@ function Starwars() {
                 <button
 
                     alt='search'
-                    onClick={(e) => show(searchWars)}
+                    onClick={() => show(searchWars)}
                 >
                     Search
                 </button>
+                <div>
+
+                { (character.map((person, index) => (
+                    <div key={index}>
+                        <h1>{person.name}</h1>
+                       
+                    </div>
+                ))
+
+                )}
+
+
+                {/* {(jedi.map((person, index) => (
+                    <div key={index}>
+                        <h1>{person.name}</h1>)
+                       
+                )} */}
+               
+                </div>
+
                 {/* <div>
             {filteredArray.map((person, index) => (
                 <div key={index}>
@@ -396,6 +417,6 @@ function Starwars() {
         </div>
     );
 }
-}
+
 
 export default Starwars;
