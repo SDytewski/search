@@ -326,7 +326,10 @@ function Starwars() {
         ]
 
     }
-
+    useEffect(() => {
+        show(jedi)
+    }, [])
+    
     function show(character) {
         const filteredArray = jedi.results.filter((e) => e.name !== character )
         setCharacter(filteredArray)
