@@ -379,19 +379,14 @@ function Starwars() {
 
                 { (character.map((person, index) => (
                     <div key={index}>
-                        <h1>{person.name}</h1>
+                        <li>{person.name}</li>
                        
                     </div>
                 ))
 
                 )}
 
-
-                {/* {(jedi.map((person, index) => (
-                    <div key={index}>
-                        <h1>{person.name}</h1>)
-                       
-                )} */}
+       
                
                 </div>
 
@@ -414,7 +409,6 @@ function Starwars() {
                         <img src={movie.Poster} width="300" height="300"></img>
                     </div>
                 )) */}
-
 
             </div>
         </div>
