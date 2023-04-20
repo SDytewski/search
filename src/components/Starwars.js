@@ -333,31 +333,11 @@ function Starwars() {
     function show(character) {
         const filteredArray = jedi.results.filter((e) => e.name !== character )
         setCharacter(filteredArray)
-
-            
-        // { return (
-        //     <div>
-              
-        //         <h1>Character</h1>
-        //         <p>{filteredArray}</p>
-              
-        //       </div>
-              
-        // )}
-        
+        setSearchWars('')
     }
 
    
-    // setCharacter(filteredArray)
-    // setCharacter(data.Search);
-    // setSearchTerm('')
-    // User types a search in the search box which is equal to my State for searching
-    //That state is tied
-
-    // const listItems = jedi.results.map((d) => <li key={d.name}>{d.name}</li>);
-
-
-    return (
+      return (
         <div className='container-fluid movie-app'>
 
             <div className='search'>
@@ -390,15 +370,6 @@ function Starwars() {
                
                 </div>
 
-                {/* <div>
-            {filteredArray.map((person, index) => (
-                <div key={index}>
-                <h1>{person.name}</h1>
-                </div>
-            ))
-            }
-                   
-                </div> */}
 
                 {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             </div>
