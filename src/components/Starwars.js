@@ -1,10 +1,11 @@
+import userEvent from '@testing-library/user-event';
 import { useState, useEffect } from 'react';
 
 
 function Starwars() {
     const [character, setCharacter] = useState([]);
 
-    // setting an array empty to use for my movies array
+    // setting an array empty to use for my characters array
 
     const [searchWars, setSearchWars] = useState('');
 
@@ -330,11 +331,14 @@ function Starwars() {
         show(jedi)
     }, [])
     
-    function show(character) {
-        const filteredArray = jedi.results.filter((e) => e.name !== character )
+    function show(makeup) {
+        const filteredArray = jedi.results.filter((e) => e.name.toUpperCase() !== makeup )
         setCharacter(filteredArray)
         setSearchWars('')
     }
+
+    // The function that filters the names from the Object and checks to see if it matches what the 
+    // user typed into the search box 
 
    
       return (
@@ -351,7 +355,7 @@ function Starwars() {
                 <button
 
                     alt='search'
-                    onClick={() => show(searchWars)}
+                    onClick={() => show(searchWars.toUpperCase())}
                 >
                     Search
                 </button>
