@@ -3,14 +3,6 @@ import { useState, useEffect } from 'react';
 
 
 function Starwars() {
-    const [character, setCharacter] = useState([]);
-
-    // setting an array empty to use for my characters array
-
-    const [searchWars, setSearchWars] = useState('');
-
-    // setting a string to use for my search term
-
     var jedi = {
 
         "count": 82,
@@ -327,19 +319,32 @@ function Starwars() {
         ]
 
     }
+    const [character, setCharacter] = useState(jedi.results);
+
+    // setting an array empty to use for my characters array
+
+    const [searchWars, setSearchWars] = useState('');
+
+    // setting a string to use for my search term
+
+
     useEffect(() => {
-        show(jedi)
-    }, [])
+        
+    }, [character])
     
-    function show(makeup) {
-        const filteredArray = jedi.results.filter((e) => e.name.toUpperCase() !== makeup )
+    function show(word) {
+
+        const filteredArray = jedi.results.filter((e) => e.name.toLowerCase() === word )
         setCharacter(filteredArray)
         setSearchWars('')
     }
 
     // The function that filters the names from the Object and checks to see if it matches what the 
     // user typed into the search box 
-
+const handleOnChange = (e)=>{
+    const userInput = e.target.value
+    setSearchWars(userInput.toLowerCase())
+}
    
       return (
         <div className='container-fluid movie-app'>
@@ -348,27 +353,33 @@ function Starwars() {
                 <input
                     placeholder='Remove a Character'
                     value={searchWars}
-                    onChange={(e) => setSearchWars(e.target.value)}
+                    onChange={handleOnChange}
                 />
 
                 {/* setting the value to my search and on change calling the method to update the value to what the user types       */}
                 <button
 
                     alt='search'
-                    onClick={() => show(searchWars.toUpperCase())}
+                    onClick={() => show(searchWars)}
                 >
                     Search
                 </button>
                 <div>
+                    {character.map((obj, i)=> 
+                        (<div>
+                            <h1>{obj.name}</h1>
+                        </div>)
+                    )}
 
-                { (character.map((person, index) => (
+                {/* { (character.map((person, index) => (
                     <div key={index}>
                         <li>{person.name}</li>
                        
+                        
                     </div>
                 ))
 
-                )}
+                )} */}
 
        
                

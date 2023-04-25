@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Starwars />
-      <Movielist />
+      {/* <Movielist /> */}
     </div>
   );
 }
