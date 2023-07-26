@@ -6,7 +6,7 @@ import Movielist from './components/Movielist.js'
 function App() {
   return (
     <div className="App">
-      <Starwars />
+      <Movielist />
       {/* <Movielist /> */}
     </div>
   );

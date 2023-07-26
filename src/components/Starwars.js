@@ -323,7 +323,7 @@ function Starwars() {
 
     // setting an array empty to use for my characters array
 
-    const [searchWars, setSearchWars] = useState('');
+    const [searchWars, setSearchWars] = useState([]);
 
     // setting a string to use for my search term
 
@@ -335,12 +335,19 @@ function Starwars() {
     function show(word) {
 
         const filteredArray = jedi.results.filter((e) => e.name.toLowerCase() === word )
+        
         setCharacter(filteredArray)
+
+        // setSearchWars((searchWars)  =>[...searchWars, { id: searchWars.length, value:  word.currentTarget.tagName['chatbox_input'].value }])
         setSearchWars('')
+
+        console.log(filteredArray)
     }
 
     // The function that filters the names from the Object and checks to see if it matches what the 
     // user typed into the search box 
+
+    
 const handleOnChange = (e)=>{
     const userInput = e.target.value
     setSearchWars(userInput.toLowerCase())
@@ -350,8 +357,10 @@ const handleOnChange = (e)=>{
         <div className='container-fluid movie-app'>
 
             <div className='search'>
+            
                 <input
                     placeholder='Remove a Character'
+                    id="chat_box" name="chatbox_input"
                     value={searchWars}
                     onChange={handleOnChange}
                 />
@@ -360,7 +369,8 @@ const handleOnChange = (e)=>{
                 <button
 
                     alt='search'
-                    onClick={() => show(searchWars)}
+                    onClick={() => show()}
+                    
                 >
                     Search
                 </button>
