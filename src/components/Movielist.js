@@ -23,6 +23,7 @@ function Movielist() {
     // setting an array empty to use for my movies array
 
     const [searchTerm, setSearchTerm] = useState('');
+   const [saveMovie, setSaveMovie] = useState('');
 
     // setting a string to use for my search term
 
@@ -89,7 +90,7 @@ function Movielist() {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {movie.itle}
+                      {movie.Title}
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the
