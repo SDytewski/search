@@ -23,7 +23,7 @@ function Movielist() {
     // setting an array empty to use for my movies array
 
     const [searchTerm, setSearchTerm] = useState('');
-   const [saveMovie, setSaveMovie] = useState('');
+//    const [saveMovie, setSaveMovie] = useState('');
 
     // setting a string to use for my search term
 
@@ -47,6 +47,14 @@ function Movielist() {
     // }, [])
 
     // On page load my movies display the results for her
+
+    const saveMovie = () => {
+
+        setName((prevMovies) => {
+            id: prevMovies.length === 0 ? 1 : prevMovies[prevMovies.length -1].id + 1
+
+        });
+    }
 
 
     return (
@@ -98,8 +106,8 @@ function Movielist() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Save</Button>
+                    
                   </CardActions>
                 </Card>
               </Grid>
