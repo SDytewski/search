@@ -13,17 +13,21 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Carousel from 'react-material-ui-carousel';
+import { Paper} from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 function Movielist() {
     const [name, setName] = useState([]);
+        
+    console.log(localStorage);
 
     // setting an array empty to use for my movies array
 
     const [searchTerm, setSearchTerm] = useState('');
-//    const [saveMovie, setSaveMovie] = useState('');
+   const [films, setFilms] = useState([]);
 
     // setting a string to use for my search term
 
@@ -51,7 +55,7 @@ function Movielist() {
     const saveMovie = () => {
 
         setName((prevMovies) => {
-            id: prevMovies.length === 0 ? 1 : prevMovies[prevMovies.length -1].id + 1
+            // id: prevMovies.length === 0 ? 1 : prevMovies[prevMovies.length -1].id + 1
 
         });
     }
@@ -81,41 +85,45 @@ function Movielist() {
         
             <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          
           {name.length === 0 ? (<h1>no movies loaded</h1>) : 
+          <div class="poster">
+          <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
+          {
+          
             (name.map((movie, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                       
-                      pt: '100%',
-                    }}
-                    image={movie.Poster}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {movie.Title}
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">Save</Button>
-                    
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))
-            )}            
-          </Grid>
-        </Container>
+            
 
+ <Paper
+ className="example"
+  component="img"
+  sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
+  alt="The house from the offer."
+  src={movie.Poster}
+  >
+
+  </Paper>
+
+
+
+             
+           
+              
+            ))
+          
+           
+            )
+            
+          }
+          </Carousel>
+          </div>
+
+            }  
+                   
+          {/* </Grid> */}
+         
+        </Container>
+        
 
 
 
@@ -132,6 +140,7 @@ function Movielist() {
             </div>
         </div> */}
         </div>
+        
     );
 }
 
