@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Carousel from 'react-material-ui-carousel';
+import CardActionArea from '@mui/material/CardActionArea';
 import { Paper} from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -22,12 +23,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 function Movielist() {
     const [name, setName] = useState([]);
         
-    console.log(localStorage);
+    // console.log(localStorage);
 
     // setting an array empty to use for my movies array
 
     const [searchTerm, setSearchTerm] = useState('');
-   const [films, setFilms] = useState([]);
+   const [favorites, setFavorites] = useState([]);
+   const [isSaving, setIsSaving] = useState(null);
 
     // setting a string to use for my search term
 
@@ -40,7 +42,7 @@ function Movielist() {
 
         //fetching my data from the API and making it dynamic with the title parameter
 
-        console.log(data);
+        console.log(data.Search);
         setName(data.Search);
         setSearchTerm('')
         //using the setName mathod to search my data in an object that contains an array of movies
@@ -52,13 +54,19 @@ function Movielist() {
 
     // On page load my movies display the results for her
 
-    const saveMovie = () => {
+    const saveMovie = (film) => {
+      
+      // setFavorites(...favorites, e)
+   
 
-        setName((prevMovies) => {
-            // id: prevMovies.length === 0 ? 1 : prevMovies[prevMovies.length -1].id + 1
+    setFavorites(current => [...current, film]);
+    
+console.log(favorites)
 
-        });
     }
+
+
+
 
 
     return (
@@ -74,7 +82,7 @@ function Movielist() {
                 <button
 
                     alt='search'
-                    onClick={() => names(searchTerm)}
+                    onClick={() => {names(searchTerm)}}
                     >
                     Search
                 </button>
@@ -93,20 +101,24 @@ function Movielist() {
           
             (name.map((movie, index) => (
             
-
- <Paper
+<Card key={movie.id}>
+<CardActionArea onClick={()=> saveMovie(movie.Poster)}>
+ <CardMedia
  className="example"
   component="img"
   sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
   alt="The house from the offer."
   src={movie.Poster}
-  >
 
-  </Paper>
+  
+  />
+   
+        {/* <Button size="large">Save</Button> */}
+        
+    </CardActionArea>
 
 
-
-             
+  </Card>
            
               
             ))
@@ -124,22 +136,8 @@ function Movielist() {
          
         </Container>
         
-
-
-
-            {/* <div className='row'>
-                {name.length === 0 ? (<h1>no movies loaded</h1>) : (name.map((movie, index) => (
-                    <div key={index}>
-                        <h1>{movie.Title}</h1>
-                        <img src={movie.Poster} width="300" height="300"></img>
-                    </div>
-                ))
-
-                )}
-
-            </div>
-        </div> */}
-        </div>
+     </div>
+       
         
     );
 }
