@@ -65,7 +65,6 @@ function Movielist() {
     // setFavorites(current => [...current, film]);
     console.log(favorites)
 
-
   }
 
   return (
