@@ -15,131 +15,129 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Carousel from 'react-material-ui-carousel';
 import CardActionArea from '@mui/material/CardActionArea';
-import { Paper} from '@mui/material';
+import { Paper } from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 function Movielist() {
-    const [name, setName] = useState([]);
-        
-    // console.log(localStorage);
+  const [name, setName] = useState([]);
 
-    // setting an array empty to use for my movies array
+  // console.log(localStorage);
 
-    const [searchTerm, setSearchTerm] = useState('');
-   const [favorites, setFavorites] = useState([]);
-   const [isSaving, setIsSaving] = useState(null);
+  // setting an array empty to use for my movies array
 
-    // setting a string to use for my search term
+  const [searchTerm, setSearchTerm] = useState('');
+  const [favorites, setFavorites] = useState([]);
+  const [isSaving, setIsSaving] = useState(null);
 
+  // setting a string to use for my search term
 
-
-    const names = async (title) => {
-        const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
-        const data = await response.json();
-        // const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
-
-        //fetching my data from the API and making it dynamic with the title parameter
-
-        console.log(data.Search);
-        setName(data.Search);
-        setSearchTerm('')
-        //using the setName mathod to search my data in an object that contains an array of movies
-
-    }
-    //     useEffect(() => {
-    //     names ('her')
-    // }, [])
-
-    // On page load my movies display the results for her
-
-    const saveMovie = (film) => {
-      
-      // setFavorites(...favorites, e)
-   
-
-    setFavorites(current => [...current, film]);
-    
-console.log(favorites)
-
-    }
+  useEffect(() => {
+    console.log(favorites);
+  }, [favorites])
 
 
+  const names = async (title) => {
+    const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
+    const data = await response.json();
+    // const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
+
+    //fetching my data from the API and making it dynamic with the title parameter
+
+    // console.log(data.Search);
+    setName(data.Search);
+    setSearchTerm('')
+    //using the setName mathod to search my data in an object that contains an array of movies
+
+  }
+
+  const saveMovie = (movie) => {
+
+    setFavorites((film) => {
+      const shows = {
+        id: film.length === 0 ? 1 : film[film.length -1].id +1,
+        movPoster: movie,
+      }
+      return [...film, shows] 
+    });
+
+    // setFavorites(current => [...current, film]);
+    console.log(favorites)
 
 
+  }
 
-    return (
-        <div className='container-fluid movie-app'>
-            <div className='search'>
-                <input
-                    placeholder='Search for moves'
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
+  return (
+    <div className='container-fluid movie-app'>
+      <div className='search'>
+        <input
+          placeholder='Search for moves'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
 
-                {/* setting the value to my search and on change calling the method to update the value to what the user types       */}
-                <button
+        {/* setting the value to my search and on change calling the method to update the value to what the user types       */}
+        <button
 
-                    alt='search'
-                    onClick={() => {names(searchTerm)}}
-                    >
-                    Search
-                </button>
+          alt='search'
+          onClick={() => { names(searchTerm) }}
+        >
+          Search
+        </button>
 
 
-                {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
-            </div>
-        
-            <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          
-          {name.length === 0 ? (<h1>no movies loaded</h1>) : 
+        {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
+      </div>
+
+      <Container sx={{ py: 8 }} maxWidth="md">
+     
+        {name.length === 0 ? (<h1>no movies loaded</h1>) :
           <div class="poster">
-          <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
-          {
-          
-            (name.map((movie, index) => (
-            
-<Card key={movie.id}>
-<CardActionArea onClick={()=> saveMovie(movie.Poster)}>
- <CardMedia
- className="example"
-  component="img"
-  sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
-  alt="The house from the offer."
-  src={movie.Poster}
+            <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
+              {
 
-  
-  />
-   
-        {/* <Button size="large">Save</Button> */}
-        
-    </CardActionArea>
+                (name.map((movie, index) => (
+
+                  <Card key={movie.id}>
+                    <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+                      <CardMedia
+                        className="example"
+                        component="img"
+                        sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
+                        alt="The house from the offer."
+                        src={movie.Poster}
 
 
-  </Card>
-           
-              
-            ))
-          
-           
-            )
-            
-          }
-          </Carousel>
+                      />
+
+                      {/* <Button size="large">Save</Button> */}
+
+                    </CardActionArea>
+
+
+                  </Card>
+
+
+                ))
+
+
+                )
+
+              }
+            </Carousel>
           </div>
 
-            }  
-                   
-          {/* </Grid> */}
-         
-        </Container>
-        
-     </div>
-       
-        
-    );
+        }
+
+        {/* </Grid> */}
+
+      </Container>
+
+    </div>
+
+
+  );
 }
 
 export default Movielist;
