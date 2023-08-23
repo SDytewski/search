@@ -52,12 +52,12 @@ function Movielist() {
 
   }
 
-  const saveMovie = (movie) => {
+  const saveMovie = (yolo) => {
 
     setFavorites((film) => {
       const shows = {
         id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
-        movPoster: movie,
+        movPoster: yolo,
       }
       return [...film, shows]
     });
@@ -123,11 +123,19 @@ function Movielist() {
                   
                   <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
                     {
-                  (name.map((movie, index) => (
+                  (favorites.map((movs, index) => (
 
                   <Grid item md={3}>
-                    <Card  key={movie.id}>
-                      
+                    <Card  key={movs.id}>
+                    <CardMedia
+                        className="example"
+                        component="img"
+                        sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
+                        alt="The house from the offer."
+                        src={movs.movPoster}
+
+                      />
+
                     </Card>
                   </Grid>
                   )))
