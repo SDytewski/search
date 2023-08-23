@@ -56,10 +56,10 @@ function Movielist() {
 
     setFavorites((film) => {
       const shows = {
-        id: film.length === 0 ? 1 : film[film.length -1].id +1,
+        id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
         movPoster: movie,
       }
-      return [...film, shows] 
+      return [...film, shows]
     });
 
     // setFavorites(current => [...current, film]);
@@ -89,15 +89,18 @@ function Movielist() {
         {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
       </div>
 
-      <Container sx={{ py: 8 }} maxWidth="md">
-     
-        {name.length === 0 ? (<h1>no movies loaded</h1>) :
-          <div class="poster">
-            <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
-              {
 
-                (name.map((movie, index) => (
 
+      {name.length === 0 ? (<h1>no movies loaded</h1>) :
+        <Grid container>
+          <div  class="poster">
+          <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
+            {
+              (name.map((movie, index) => (
+                
+                  <Grid item>
+                  
+                  
                   <Card key={movie.id}>
                     <CardActionArea onClick={() => saveMovie(movie.Poster)}>
                       <CardMedia
@@ -107,33 +110,47 @@ function Movielist() {
                         alt="The house from the offer."
                         src={movie.Poster}
 
-
                       />
 
                       {/* <Button size="large">Save</Button> */}
 
                     </CardActionArea>
-
-
                   </Card>
-
-
-                ))
-
-
-                )
-
+                  </Grid>
+                   )) )
               }
-            </Carousel>
-          </div>
+                  </Carousel>
+                  
+                  <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
+                    {
+                  (name.map((movie, index) => (
 
-        }
+                  <Grid item md={3}>
+                    <Card  key={movie.id}>
+                      
+                    </Card>
+                  </Grid>
+                  )))
+                }
+                  </Carousel>
+                  
+             
 
-        {/* </Grid> */}
 
-      </Container>
+              
 
-    </div>
+           
+
+          </div >
+        </Grid >
+
+      }
+
+      {/* </Grid> */}
+
+
+
+    </div >
 
 
   );
