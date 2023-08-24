@@ -123,7 +123,7 @@ function Movielist() {
                   
                   <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
                     {
-                  (favorites.map((movs, index) => (
+                  (favorites.toReversed().map((movs, index) => (
 
                   <Grid item md={3}>
                     <Card  key={movs.id}>
