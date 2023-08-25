@@ -105,7 +105,7 @@ function Movielist() {
                         <CardMedia
                           className="example"
                           component="img"
-                          sx={{ maxHeight: 650, width: '100%', display: 'flex', flexDirection: 'row' }}
+                          sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                           alt="The house from the offer."
                           src={movie.Poster}
                         />
@@ -133,7 +133,7 @@ function Movielist() {
                       <CardMedia
                         className="example"
                         component="img"
-                        sx={{ maxHeight: 650, width: '100%', display: 'flex', flexDirection: 'row' }}
+                        sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                         alt="The house from the offer."
                         src={movs.movPoster}
 
