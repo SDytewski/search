@@ -92,64 +92,70 @@ function Movielist() {
 
 
       {name.length === 0 ? (<h1>no movies loaded</h1>) :
+
         <Grid container>
-          <div  class="poster">
-          <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
-            {
-              (name.map((movie, index) => (
-                
-                  <Grid item>
-                  
-                  
-                  <Card key={movie.id}>
-                    <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+
+          <Grid item xs={6}>
+            <div className="carousel">
+              <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
+                {
+                  (name.map((movie, index) => (
+                   <Card key={movie.id}  >
+                      <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+                        <CardMedia
+                          className="example"
+                          component="img"
+                          sx={{ maxHeight: 650, width: '100%', display: 'flex', flexDirection: 'row' }}
+                          alt="The house from the offer."
+                          src={movie.Poster}
+                        />
+
+                        {/* <Button size="large">Save</Button> */}
+
+                      </CardActionArea>
+                    </Card>
+
+                  )))
+                }
+              </Carousel>
+            </div>
+
+          </Grid>
+          <Grid item xs={6}>
+            <div className="carousel">
+
+              <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
+                {
+                  (favorites.toReversed().map((movs, index) => (
+
+
+                    <Card key={movs.id}>
                       <CardMedia
                         className="example"
                         component="img"
-                        sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
-                        alt="The house from the offer."
-                        src={movie.Poster}
-
-                      />
-
-                      {/* <Button size="large">Save</Button> */}
-
-                    </CardActionArea>
-                  </Card>
-                  </Grid>
-                   )) )
-              }
-                  </Carousel>
-                  
-                  <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false}>
-                    {
-                  (favorites.toReversed().map((movs, index) => (
-
-                  <Grid item md={3}>
-                    <Card  key={movs.id}>
-                    <CardMedia
-                        className="example"
-                        component="img"
-                        sx={{ height: '50%', width: '100%', display: 'flex', flexDirection: 'row' }}
+                        sx={{ maxHeight: 650, width: '100%', display: 'flex', flexDirection: 'row' }}
                         alt="The house from the offer."
                         src={movs.movPoster}
 
                       />
 
                     </Card>
-                  </Grid>
+
                   )))
                 }
-                  </Carousel>
-                  
-             
+              </Carousel>
+            </div>
+
+          </Grid>
 
 
-              
 
-           
 
-          </div >
+
+
+
+
+
         </Grid >
 
       }

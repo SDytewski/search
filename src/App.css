@@ -37,16 +37,24 @@
   }
 }
 
-.example
+/* .example
 {
    
-    max-height: 600px;
+    max-height: 500px;
     
    
    
-}
+} */
 
 .poster {
   max-width: 50%;
 }
 
+/* img {
+  max-height: 500px;
+} */
+
+.carousel {
+display: flex;
+justify-content: center;
+}
