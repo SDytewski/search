@@ -34,7 +34,7 @@ function Movielist() {
   // setting a string to use for my search term
 
   useEffect(() => {
-    console.log(favorites);
+    // console.log(favorites);
   }, [favorites])
 
 
@@ -53,19 +53,39 @@ function Movielist() {
   }
 
   const saveMovie = (yolo) => {
-
+  //  console.log(favorites);
+    
     setFavorites((film) => {
       const shows = {
         id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
         movPoster: yolo,
       }
-      return [...film, shows]
-    });
 
+      const userObject = favorites;
+      // console.log(userObject);
+
+
+  
+      for(var i = 0; i < userObject.length; i++) {
+        if (userObject[i].movPoster === yolo) {
+          alert("hi");
+          
+        }
+      }
+      return [...film, shows]
+      
+     
+      // if (yolo === film.movePoster) {
+      //   alert("hello!")
+      // } 
+    });
+    
     // setFavorites(current => [...current, film]);
-    console.log(favorites)
+    
 
   }
+
+
 
   return (
     <div className='container-fluid movie-app'>
@@ -96,10 +116,13 @@ function Movielist() {
         <Grid container>
 
           <Grid item xs={6}>
+            <h1>Movies</h1>
             <div className="carousel">
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
                   (name.map((movie, index) => (
+                    
+
                    <Card key={movie.id}  >
                       <CardActionArea onClick={() => saveMovie(movie.Poster)}>
                         <CardMedia
@@ -122,13 +145,15 @@ function Movielist() {
 
           </Grid>
           <Grid item xs={6}>
+            <h1>Favorites</h1>
             <div className="carousel">
 
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
+                  
                   (favorites.toReversed().map((movs, index) => (
-
-
+                  
+                    
                     <Card key={movs.id}>
                       <CardMedia
                         className="example"
