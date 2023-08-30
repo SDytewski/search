@@ -28,8 +28,9 @@ function Movielist() {
   // setting an array empty to use for my movies array
 
   const [searchTerm, setSearchTerm] = useState('');
+
   const [favorites, setFavorites] = useState([]);
-  const [isSaving, setIsSaving] = useState(null);
+
 
   // setting a string to use for my search term
 
@@ -52,38 +53,53 @@ function Movielist() {
 
   }
 
+
+  // console.log(name);
+
   const saveMovie = (yolo) => {
-  //  console.log(favorites);
-    
-    setFavorites((film) => {
-      const shows = {
-        id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
-        movPoster: yolo,
-      }
 
-      const userObject = favorites;
-      // console.log(userObject);
+    // favorites.filter(checkMovie)
+
+    // favorites.map((index, film) => ? (
+    //   !favorites[i].movPoster === yolo
+
+    //   array.some( function callback(item) {
+    //     // condition of the callback function.
+    //     return typeof item == "object";
+    //  })
 
 
-  
-      for(var i = 0; i < userObject.length; i++) {
-        if (userObject[i].movPoster === yolo) {
-          alert("hi");
-          
+    var r = favorites.some(i => i.movPoster.includes(yolo));
+
+    // (!favorites[item].movPoster === yolo) 
+    if (!r) {
+      setFavorites((film) => {
+        const shows = {
+          id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
+          movPoster: yolo,
         }
-      }
-      return [...film, shows]
-      
-     
-      // if (yolo === film.movePoster) {
-      //   alert("hello!")
-      // } 
-    });
-    
-    // setFavorites(current => [...current, film]);
-    
+
+        const returnValue = [...film, shows];
+
+        return returnValue;
+
+      });
+
+
+    }
+    else {
+      alert("movie already added to your favorites!")
+    }
 
   }
+
+  // if (!favorites[i].includes(yolo)) {
+
+
+  // }
+
+
+
 
 
 
@@ -100,7 +116,7 @@ function Movielist() {
         <button
 
           alt='search'
-          onClick={() => { names(searchTerm) }}
+          onClick={() => { names(searchTerm); }}
         >
           Search
         </button>
@@ -121,9 +137,9 @@ function Movielist() {
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
                   (name.map((movie, index) => (
-                    
 
-                   <Card key={movie.id}  >
+
+                    <Card key={movie.id}  >
                       <CardActionArea onClick={() => saveMovie(movie.Poster)}>
                         <CardMedia
                           className="example"
@@ -150,10 +166,10 @@ function Movielist() {
 
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
-                  
+
                   (favorites.toReversed().map((movs, index) => (
-                  
-                    
+
+
                     <Card key={movs.id}>
                       <CardMedia
                         className="example"
