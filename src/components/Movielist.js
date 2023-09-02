@@ -56,27 +56,16 @@ function Movielist() {
 
   // console.log(name);
 
-  const saveMovie = (yolo) => {
+  const saveMovie = (poster) => {
 
-    // favorites.filter(checkMovie)
-
-    // favorites.map((index, film) => ? (
-    //   !favorites[i].movPoster === yolo
-
-    //   array.some( function callback(item) {
-    //     // condition of the callback function.
-    //     return typeof item == "object";
-    //  })
-
-
-    var r = favorites.some(i => i.movPoster.includes(yolo));
+     var r = favorites.some(i => i.movPoster.includes(poster));
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
-          movPoster: yolo,
+          movPoster: poster,
         }
 
         const returnValue = [...film, shows];
@@ -88,7 +77,7 @@ function Movielist() {
 
     }
     else {
-      alert("movie already added to your favorites!")
+      alert("Movie already exists on your favorites!")
     }
 
   }
