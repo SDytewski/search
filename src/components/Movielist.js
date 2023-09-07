@@ -117,6 +117,7 @@ function Movielist() {
 
           alt='search'
           onClick={() => { names(searchTerm); }}
+          style={{textAlign: "center"}}
         >
           Search
         </button>
@@ -132,7 +133,7 @@ function Movielist() {
         <Grid container direction="row">
 
           <Grid item xs={6}>
-            <h1>Movies</h1>
+            <h1  style={{textAlign: "center"}}>Movies</h1>
             <div className="carousel">
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
@@ -164,8 +165,8 @@ function Movielist() {
            {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
 
 
-           <Grid item xs={6} >
-            <h1>Favorites</h1>
+           <Grid item xs={6}>
+            <h1  style={{textAlign: "center"}}>Favorites</h1>
           {
 
             (favorites.toReversed().map((movs, index) => (
