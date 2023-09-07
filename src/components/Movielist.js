@@ -18,6 +18,17 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { Paper } from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
 
 
 function Movielist() {
@@ -58,7 +69,7 @@ function Movielist() {
 
   const saveMovie = (poster) => {
 
-     var r = favorites.some(i => i.movPoster.includes(poster));
+    var r = favorites.some(i => i.movPoster.includes(poster));
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
@@ -118,7 +129,7 @@ function Movielist() {
 
       {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
-        <Grid container>
+        <Grid container direction="row">
 
           <Grid item xs={6}>
             <h1>Movies</h1>
@@ -149,44 +160,49 @@ function Movielist() {
             </div>
 
           </Grid>
-          <Grid item xs={6}>
+
+           {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+
+
+           <Grid item xs={6} >
             <h1>Favorites</h1>
-            <div className="carousel">
+          {
 
-              <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
-                {
+            (favorites.toReversed().map((movs, index) => (
 
-                  (favorites.toReversed().map((movs, index) => (
+              
+                <span className="card" key={movs.id}>
+                  {/* <Card> */}
+                  <img
+                    className="example"
+                    component="img"
+                    // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                    alt="The house from the offer."
+                    src={movs.movPoster}
 
+                  />
 
-                    <Card key={movs.id}>
-                      <CardMedia
-                        className="example"
-                        component="img"
-                        sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                        alt="The house from the offer."
-                        src={movs.movPoster}
-
-                      />
-
-                    </Card>
-
-                  )))
-                }
-              </Carousel>
-            </div>
-
-          </Grid>
+                  {/* </Card> */}
+                </span>
+               
 
 
+            )))
+          }
 
+</Grid>
+
+        </Grid>
 
 
 
 
 
 
-        </Grid >
+
+
+
+
 
       }
 

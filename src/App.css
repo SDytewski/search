@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -57,4 +57,43 @@
 .carousel {
 display: flex;
 justify-content: center;
+}
+
+/* .media {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: #282c34;
+  position: relative;
+
+} */
+
+
+/* .example:hover {
+ 
+  background-color: black;
+} */
+img {
+  justify-content: left;
+
+ min-height: 330px !important;
+  margin-left: 5px !important;
+  width: 200px;
+}
+.img {
+  width: 50%;
+}
+
+.card {
+  text-align: left !important;
+}
+
+@media (max-width: 550px) {
+  .media {
+    width: 46%;
+  }
+
+
 }
