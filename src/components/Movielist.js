@@ -30,6 +30,26 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
+const Butt = ({ display }) => {
+  return (
+    <div className={display}>
+      <Button
+        style={{
+          // position: "absolute",
+          top: "80%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+        variant="contained"
+      >
+        Delete
+      </Button>
+    </div>
+  );
+};
+
+
+
 
 function Movielist() {
   const [name, setName] = useState([]);
@@ -37,7 +57,11 @@ function Movielist() {
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
-
+  const [display, setDisplay] = useState('notdisplayed');
+  const showButton = (e) => {
+    e.preventDefault();
+    setDisplay("displayed");
+  };
   const [searchTerm, setSearchTerm] = useState('');
 
   const [favorites, setFavorites] = useState([]);
@@ -49,6 +73,11 @@ function Movielist() {
     // console.log(favorites);
   }, [favorites])
 
+
+  const hideButton = (e) => {
+    e.preventDefault();
+    setDisplay("notdisplayed");
+  };
 
   const names = async (title) => {
     const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
@@ -117,7 +146,7 @@ function Movielist() {
 
           alt='search'
           onClick={() => { names(searchTerm); }}
-          style={{textAlign: "center"}}
+          style={{ textAlign: "center" }}
         >
           Search
         </button>
@@ -133,7 +162,7 @@ function Movielist() {
         <Grid container direction="row">
 
           <Grid item xs={6}>
-            <h1  style={{textAlign: "center"}}>Movies</h1>
+            <h1 style={{ textAlign: "center" }}>Movies</h1>
             <div className="carousel">
               <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
                 {
@@ -162,36 +191,56 @@ function Movielist() {
 
           </Grid>
 
-           {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+          {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
 
 
-           <Grid item xs={6}>
-            <h1  style={{textAlign: "center"}}>Favorites</h1>
-          {
+          <Grid item xs={6}>
+            <h1 style={{ textAlign: "center" }}>Favorites</h1>
+            {
 
-            (favorites.toReversed().map((movs, index) => (
+              (favorites.toReversed().map((movs, index) => (
 
-              
+
                 <span className="card" key={movs.id}>
-                  {/* <Card> */}
-                  <img
-                    className="example"
-                    component="img"
-                    // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                    alt="The house from the offer."
-                    src={movs.movPoster}
+                  <Card
+                    sx={{ minWidth: 200 }}
+                    style={{ position: "relative", width: "100%" }}
+                  >
+                    <div
+                      onMouseEnter={(e) => showButton(e)}
+                      onMouseLeave={(e) => hideButton(e)}>
+                   
 
-                  />
+                    {/* <Card> */}
+                    <CardMedia
 
-                  {/* </Card> */}
+                      style={{
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        width: "50%",
+                        height: "auto",
+                        zIndex: "1",
+                      }}
+                      className="example"
+                      component="img"
+                      // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                      alt="The house from the offer."
+                      image={movs.movPoster}
+
+                    />
+                       </div>
+                    {/* </Card> */}
+
+                    <Butt display={display} />
+                  </Card>
                 </span>
-               
 
 
-            )))
-          }
 
-</Grid>
+              )))
+            }
+
+          </Grid>
 
         </Grid>
 

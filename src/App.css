@@ -90,6 +90,15 @@ img {
   text-align: left !important;
 }
 
+.notdisplayed {
+  display: none;
+}
+
+.displayed {
+  display: block;  
+}
+  
+
 @media (max-width: 550px) {
   .media {
     width: 46%;
