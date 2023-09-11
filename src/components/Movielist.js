@@ -53,12 +53,17 @@ const Butt = ({ display }) => {
 
 function Movielist() {
   const [name, setName] = useState([]);
+  const [person, setPerson] = useState("John")
 
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
   const [display, setDisplay] = useState('notdisplayed');
   const showButton = (e) => {
+    // console.log(e);
+
+    // if(shows.id===e)
+    console.log(e)
     e.preventDefault();
     setDisplay("displayed");
   };
@@ -107,6 +112,7 @@ function Movielist() {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
+        console.log(shows.id);
 
         const returnValue = [...film, shows];
 
@@ -127,11 +133,6 @@ function Movielist() {
 
   // }
 
-
-
-
-
-
   return (
     <div className='container-fluid movie-app'>
       <div className='search'>
@@ -150,6 +151,10 @@ function Movielist() {
         >
           Search
         </button>
+        <div id="people">
+        {person}
+        </div>
+        <button onClick={()=>{setPerson("Bob")}}>Click</button>
 
 
         {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
