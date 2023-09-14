@@ -30,23 +30,24 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-const Butt = ({ display }) => {
-  return (
-    <div className={display}>
-      <Button
-        style={{
-          // position: "absolute",
-          top: "80%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-        variant="contained"
-      >
-        Delete
-      </Button>
-    </div>
-  );
-};
+// const Butt = ({ display }) => {
+//   return (
+//     <div className={display}>
+//       <Button
+//         style={{
+//           // position: "absolute",
+//           top: "80%",
+//           left: "50%",
+//           transform: "translate(-50%, -50%)",
+//           display: "{see === i? 'block':'none'}"
+//         }}
+//         variant="contained"
+//       >
+//         Delete
+//       </Button>
+//     </div>
+//   );
+// };
 
 
 
@@ -58,14 +59,18 @@ function Movielist() {
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
-  const [display, setDisplay] = useState('notdisplayed');
-  const showButton = (e) => {
+  const [see, setSee] = useState(-1);
+
+
+
+  
+  const showButton = (i) => {
     // console.log(e);
 
     // if(shows.id===e)
-    console.log(e)
-    e.preventDefault();
-    setDisplay("displayed");
+    // console.log(e)
+    // e.preventDefault();
+    setSee(i);
   };
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -79,9 +84,9 @@ function Movielist() {
   }, [favorites])
 
 
-  const hideButton = (e) => {
-    e.preventDefault();
-    setDisplay("notdisplayed");
+  const hideButton = () => {
+    // e.preventDefault();
+    setSee(-1);
   };
 
   const names = async (title) => {
@@ -203,7 +208,7 @@ function Movielist() {
             <h1 style={{ textAlign: "center" }}>Favorites</h1>
             {
 
-              (favorites.toReversed().map((movs, index) => (
+              (favorites.toReversed().map((movs, i) => (
 
 
                 <span className="card" key={movs.id}>
@@ -212,8 +217,8 @@ function Movielist() {
                     style={{ position: "relative", width: "100%" }}
                   >
                     <div
-                      onMouseEnter={(e) => showButton(e)}
-                      onMouseLeave={(e) => hideButton(e)}>
+                      onMouseEnter={() => showButton(i)}
+                      onMouseLeave={hideButton}>
                    
 
                     {/* <Card> */}
@@ -236,7 +241,13 @@ function Movielist() {
                        </div>
                     {/* </Card> */}
 
-                    <Butt display={display} />
+                    {/* <Butt display={see === i? 'block':'none'} /> */}
+
+                    <Button 
+                 
+                 style={{  display: see === i? 'block':'none'}}>
+                      Primary</Button>
+                     
                   </Card>
                 </span>
 
