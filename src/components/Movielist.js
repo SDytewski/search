@@ -30,28 +30,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-// const Butt = ({ display }) => {
-//   return (
-//     <div className={display}>
-//       <Button
-//         style={{
-//           // position: "absolute",
-//           top: "80%",
-//           left: "50%",
-//           transform: "translate(-50%, -50%)",
-//           display: "{see === i? 'block':'none'}"
-//         }}
-//         variant="contained"
-//       >
-//         Delete
-//       </Button>
-//     </div>
-//   );
-// };
-
-
-
-
 function Movielist() {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("John")
@@ -63,13 +41,9 @@ function Movielist() {
 
 
 
-  
-  const showButton = (i) => {
-    // console.log(e);
 
-    // if(shows.id===e)
-    // console.log(e)
-    // e.preventDefault();
+  const showButton = (i) => {
+
     setSee(i);
   };
   const [searchTerm, setSearchTerm] = useState('');
@@ -103,6 +77,14 @@ function Movielist() {
 
   }
 
+  const deleteMovie = (movPost, favorites) => {
+    const newFavorites = favorites.filter((favs) => {
+      return favs.movPoster != movPost
+    });
+    setFavorites(newFavorites)
+
+  }
+  // }
 
   // console.log(name);
 
@@ -117,7 +99,7 @@ function Movielist() {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
-        console.log(shows.id);
+        console.log(shows.movPoster);
 
         const returnValue = [...film, shows];
 
@@ -133,10 +115,6 @@ function Movielist() {
 
   }
 
-  // if (!favorites[i].includes(yolo)) {
-
-
-  // }
 
   return (
     <div className='container-fluid movie-app'>
@@ -157,9 +135,9 @@ function Movielist() {
           Search
         </button>
         <div id="people">
-        {person}
+          {person}
         </div>
-        <button onClick={()=>{setPerson("Bob")}}>Click</button>
+        <button onClick={() => { setPerson("Bob") }}>Click</button>
 
 
         {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
@@ -216,10 +194,10 @@ function Movielist() {
                     sx={{ minWidth: 200 }}
                     style={{ position: "relative", width: "100%" }}
                   >
-                    <div
+
+<div
                       onMouseEnter={() => showButton(i)}
                       onMouseLeave={hideButton}>
-                   
 
                     {/* <Card> */}
                     <CardMedia
@@ -238,25 +216,29 @@ function Movielist() {
                       image={movs.movPoster}
 
                     />
-                       </div>
+
                     {/* </Card> */}
 
                     {/* <Butt display={see === i? 'block':'none'} /> */}
 
-                    <Button 
+
+
                  
-                 style={{  display: see === i? 'block':'none'}}>
-                      Primary</Button>
-                     
-                  </Card>
+                      <Button
+
+                        style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                        Delete HERE</Button>
+                  
+                </div>
+                </Card>
                 </span>
 
 
 
-              )))
+          )))
             }
 
-          </Grid>
+        </Grid>
 
         </Grid>
 
@@ -272,7 +254,7 @@ function Movielist() {
 
       }
 
-      {/* </Grid> */}
+{/* </Grid> */ }
 
 
 
