@@ -51,13 +51,14 @@ function Movielist() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const [favorites, setFavorites] = useState([]);
-    const { 
-    register, 
-    handleSubmit, 
-    formState:{ errors },
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
     reset
   } = useForm();
-const onSubmit = (event) => setSearchTerm(names); 
+
+  const onSubmit = (event) => setSearchTerm(names);
 
   // setting a string to use for my search term
 
@@ -122,177 +123,173 @@ const onSubmit = (event) => setSearchTerm(names);
   }
 
   return (
-    <div className='container-fluid movie-app'>
-      <div className='search'>
-        {/* <input
-          placeholder='Search for movies'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        /> */}
 
-        {/* setting the value to my search and on change calling the method to update the value to what the user types       */}
-        {/* <button
+    <Container maxWidth="lg">
+      <Box sx={{ flexGrow: 1 }} padding={2} >
+        <Grid container spacing={2} >
 
-          alt='search'
-          onClick={() => { names(searchTerm); }}
-          style={{ textAlign: "center" }}
-        >
-          Search
-        </button> */}
-
-         <form onSubmit={handleSubmit(onSubmit)}>
-
- <TextField id="outlined-basic"
-                  type="text"
-                  name="movie"
-                  value={searchTerm}
-                
-                  placeholder="Search for a Movie"
-                  {...register ("email", {
-                    required: "Please enter at least one character",
-                    minLength: 1
-                  
-                  })}
-                  error={!!errors?.email}
-                  
-                  helperText={errors?.email ? errors.email.message : null}
-                  sx={{ ml: 1, mt: 1, p: 2, }}
-                  onChange={(e) => {
-                   setSearchTerm(e.target.value);
-                  }} />
+          <Grid item xs={12}>
+            <div className='container-fluid movie-app'>
+              <div className='search'>
 
 
-               <Button className="add-button" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }}onSubmit={(e)=> names(searchTerm)}>
-                  Send
-                </Button>
+                <form onSubmit={handleSubmit(onSubmit)}>
 
-        </form>
+                  <TextField id="outlined-basic"
+                    type="text"
+                    name="movie"
+                    value={searchTerm}
 
-        {/* <div id="people">
+                    placeholder="Search for a Movie"
+                    {...register("email", {
+                      required: "Please enter at least one character",
+                      minLength: 1
+
+                    })}
+                    error={!!errors?.email}
+
+                    helperText={errors?.email ? errors.email.message : null}
+                    sx={{ ml: 1, mt: 1, p: 2, }}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                    }} />
+
+
+                  <Button className="add-button" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
+                    Send
+                  </Button>
+
+                </form>
+
+                {/* <div id="people">
           {person}
         </div>
         <button onClick={() => { setPerson("Bob") }}>Click</button> */}
 
 
-        {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
-      </div>
+                {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
+              </div>
 
 
-      {name.length === 0 ? (<h1>no movies loaded</h1>) :
+              {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
-        <Grid container direction="row">
+                <Grid container direction="row">
 
-          <Grid item xs={6}>
-            <h1 style={{ textAlign: "center" }}>Movies</h1>
-            <div className="carousel">
-              <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
-                {
-                  (name.map((movie, index) => (
+                  <Grid item xs={6}>
+                    <h1 style={{ textAlign: "center" }}>Movies</h1>
+                    <div className="carousel">
+                      <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
+                        {
+                          (name.map((movie, index) => (
 
 
-                    <Card key={movie.id}  >
-                      <CardActionArea onClick={() => saveMovie(movie.Poster)}>
-                        <CardMedia
-                          className="example"
-                          component="img"
-                          sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                          alt="The house from the offer."
-                          src={movie.Poster}
-                        />
+                            <Card key={movie.id}  >
+                              <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+                                <CardMedia
+                                  className="example"
+                                  component="img"
+                                  sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                  alt="The house from the offer."
+                                  src={movie.Poster}
+                                />
 
-                        {/* <Button size="large">Save</Button> */}
+                                {/* <Button size="large">Save</Button> */}
 
-                      </CardActionArea>
-                    </Card>
+                              </CardActionArea>
+                            </Card>
 
-                  )))
-                }
-              </Carousel>
-            </div>
+                          )))
+                        }
+                      </Carousel>
+                    </div>
 
+                  </Grid>
+
+                  {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+
+
+                  <Grid item xs={6}>
+                    <h1 style={{ textAlign: "center" }}>Favorites</h1>
+                    {
+
+                      (favorites.toReversed().map((movs, i) => (
+
+
+                        <span className="card" key={movs.id}>
+                          <Card
+                            sx={{ minWidth: 200 }}
+                            style={{ position: "relative", width: "100%" }}
+                          >
+
+                            <div
+                              onMouseEnter={() => showButton(i)}
+                              onMouseLeave={hideButton}>
+
+                              {/* <Card> */}
+                              <CardMedia
+
+                                style={{
+                                  marginLeft: "auto",
+                                  marginRight: "auto",
+                                  width: "50%",
+                                  height: "auto",
+                                  zIndex: "1",
+                                }}
+                                className="example"
+                                component="img"
+                                // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                alt="The house from the offer."
+                                image={movs.movPoster}
+
+                              />
+
+                              {/* </Card> */}
+
+                              {/* <Butt display={see === i? 'block':'none'} /> */}
+
+
+
+
+                              <Button
+
+                                style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                                Delete HERE</Button>
+
+                            </div>
+                          </Card>
+                        </span>
+
+
+
+                      )))
+                    }
+
+                  </Grid>
+
+                </Grid>
+
+
+
+
+
+
+
+
+
+
+
+              }
+
+              {/* </Grid> */}
+
+
+
+            </div >
           </Grid>
 
-          {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
-
-
-          <Grid item xs={6}>
-            <h1 style={{ textAlign: "center" }}>Favorites</h1>
-            {
-
-              (favorites.toReversed().map((movs, i) => (
-
-
-                <span className="card" key={movs.id}>
-                  <Card
-                    sx={{ minWidth: 200 }}
-                    style={{ position: "relative", width: "100%" }}
-                  >
-
-<div
-                      onMouseEnter={() => showButton(i)}
-                      onMouseLeave={hideButton}>
-
-                    {/* <Card> */}
-                    <CardMedia
-
-                      style={{
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        width: "50%",
-                        height: "auto",
-                        zIndex: "1",
-                      }}
-                      className="example"
-                      component="img"
-                      // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                      alt="The house from the offer."
-                      image={movs.movPoster}
-
-                    />
-
-                    {/* </Card> */}
-
-                    {/* <Butt display={see === i? 'block':'none'} /> */}
-
-
-
-                 
-                      <Button
-
-                        style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                        Delete HERE</Button>
-                  
-                </div>
-                </Card>
-                </span>
-
-
-
-          )))
-            }
-
         </Grid>
-
-        </Grid>
-
-
-
-
-
-
-
-
-
-
-
-      }
-
-{/* </Grid> */ }
-
-
-
-    </div >
-
+      </Box>
+    </Container>
 
   );
 }
