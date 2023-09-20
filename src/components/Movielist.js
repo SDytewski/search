@@ -19,6 +19,10 @@ import { Paper } from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import { useForm } from "react-hook-form";
+
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -40,8 +44,6 @@ function Movielist() {
   const [see, setSee] = useState(-1);
 
 
-
-
   const showButton = (i) => {
 
     setSee(i);
@@ -49,7 +51,13 @@ function Movielist() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const [favorites, setFavorites] = useState([]);
-
+    const { 
+    register, 
+    handleSubmit, 
+    formState:{ errors },
+    reset
+  } = useForm();
+const onSubmit = (event) => setSearchTerm(names); 
 
   // setting a string to use for my search term
 
@@ -106,8 +114,6 @@ function Movielist() {
         return returnValue;
 
       });
-
-
     }
     else {
       alert("Movie already exists on your favorites!")
@@ -115,34 +121,61 @@ function Movielist() {
 
   }
 
-
   return (
     <div className='container-fluid movie-app'>
       <div className='search'>
-        <input
-          placeholder='Search for moves'
+        {/* <input
+          placeholder='Search for movies'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        /> */}
 
         {/* setting the value to my search and on change calling the method to update the value to what the user types       */}
-        <button
+        {/* <button
 
           alt='search'
           onClick={() => { names(searchTerm); }}
           style={{ textAlign: "center" }}
         >
           Search
-        </button>
-        <div id="people">
+        </button> */}
+
+         <form onSubmit={handleSubmit(onSubmit)}>
+
+ <TextField id="outlined-basic"
+                  type="text"
+                  name="movie"
+                  value={searchTerm}
+                
+                  placeholder="Search for a Movie"
+                  {...register ("email", {
+                    required: "Please enter at least one character",
+                    minLength: 1
+                  
+                  })}
+                  error={!!errors?.email}
+                  
+                  helperText={errors?.email ? errors.email.message : null}
+                  sx={{ ml: 1, mt: 1, p: 2, }}
+                  onChange={(e) => {
+                   setSearchTerm(e.target.value);
+                  }} />
+
+
+               <Button className="add-button" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }}onSubmit={(e)=> names(searchTerm)}>
+                  Send
+                </Button>
+
+        </form>
+
+        {/* <div id="people">
           {person}
         </div>
-        <button onClick={() => { setPerson("Bob") }}>Click</button>
+        <button onClick={() => { setPerson("Bob") }}>Click</button> */}
 
 
         {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
       </div>
-
 
 
       {name.length === 0 ? (<h1>no movies loaded</h1>) :
