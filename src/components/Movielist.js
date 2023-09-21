@@ -22,7 +22,21 @@ import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 
+const primary = {
+  main: '#000000',
+  light: '#42a5f5',
+  dark: '#1565c0',
+  contrastText: '#fff',
+};
 
+// const theme = createTheme({
+//   palette: {
+//     anger: createColor('#F40B27'),
+//     apple: createColor('#5DBA40'),
+//     steelBlue: createColor('#5C76B7'),
+//     violet: createColor('#BC00A3'),
+//   },
+// });
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -129,11 +143,28 @@ function Movielist() {
         <Grid container spacing={2} >
 
           <Grid item xs={12}>
-            <div className='container-fluid movie-app'>
-              <div className='search'>
 
+            {/* <Item> */}
+            {/* <div className='container-fluid movie-app'>
+              <div className='search'> */}
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+<Typography variant="h2" backgroundColor= {primary.main} color="common.white" padding={5}
+align="center"
+
+id="sign"
+
+>MOVIE LIST
+</Typography>
+<Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  // sx={{ minHeight: '100vh' }}
+>
+  <Grid item xs={3}>
+                <form onSubmit={handleSubmit(onSubmit)} >
 
                   <TextField id="outlined-basic"
                     type="text"
@@ -155,11 +186,14 @@ function Movielist() {
                     }} />
 
 
-                  <Button className="add-button" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
+                  <Button className="add-button" color="error" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
                     Send
                   </Button>
 
                 </form>
+                </Grid>
+                </Grid>
+                {/* </Item> */}
 
                 {/* <div id="people">
           {person}
@@ -168,7 +202,7 @@ function Movielist() {
 
 
                 {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
-              </div>
+              {/* </div> */}
 
 
               {name.length === 0 ? (<h1>no movies loaded</h1>) :
@@ -284,7 +318,7 @@ function Movielist() {
 
 
 
-            </div >
+            {/* </div > */}
           </Grid>
 
         </Grid>

@@ -98,7 +98,14 @@ img {
   display: block;  
 }
   
+#sign{
+  box-shadow: 10px 10px 10px 10px rgb(164, 227, 227);
+  border-radius: 5px;
+}
 
+form {
+  border: none;
+}
 @media (max-width: 550px) {
   .media {
     width: 46%;
