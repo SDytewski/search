@@ -141,7 +141,7 @@ function Movielist() {
             {/* <div className='container-fluid movie-app'>
               <div className='search'> */}
 
-<Typography variant="h2" color="common.white" padding={10}
+<Typography variant="h2" color="common.white" 
 align="center"
 
 id="sign"
