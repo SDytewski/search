@@ -141,26 +141,26 @@ function Movielist() {
             {/* <div className='container-fluid movie-app'>
               <div className='search'> */}
 
-<Typography variant="h2" color="common.white" 
-align="center"
+            <Typography variant="h2" color="common.white"
+              align="center"
 
-id="sign"
-
-
->MOVIE LIST
-
-</Typography>
+              id="sign"
 
 
-<Grid
-  container
-  spacing={0}
-  direction="column"
-  alignItems="center"
-  justifyContent="center"
-  // sx={{ minHeight: '100vh' }}
->
-  <Grid item xs={3}>
+            >MOVIE LIST
+
+            </Typography>
+
+
+            <Grid
+              container
+              spacing={0}
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+            // sx={{ minHeight: '100vh' }}
+            >
+              <Grid item xs={3}>
                 <form onSubmit={handleSubmit(onSubmit)} >
 
                   <TextField id="outlined-basic"
@@ -185,122 +185,123 @@ id="sign"
 
                   <Button className="add-button" color="error" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
                     Send
-                  </Button>{}
+                  </Button>{ }
 
                 </form>
-                </Grid>
-                </Grid>
-                {/* </Item> */}
+              </Grid>
+            </Grid>
+            {/* </Item> */}
 
-                {/* <div id="people">
+            {/* <div id="people">
           {person}
         </div>
         <button onClick={() => { setPerson("Bob") }}>Click</button> */}
 
 
-                {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
-              {/* </div> */}
+            {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
+            {/* </div> */}
 
 
-              {name.length === 0 ? (<h1>no movies loaded</h1>) :
+            {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
-                <Grid container direction="row">
+              <Grid container direction="row">
 
-                  <Grid item xs={6}>
-                    <h1 style={{ textAlign: "center" }}>Movies</h1>
-                    <div className="carousel">
-                      <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
-                        {
-                          (name.map((movie, index) => (
-
-
-                            <Card key={movie.id}  >
-                              <CardActionArea onClick={() => saveMovie(movie.Poster)}>
-                                <CardMedia
-                                  className="example"
-                                  component="img"
-                                  sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                  alt="The house from the offer."
-                                  src={movie.Poster}
-                                />
-
-                                {/* <Button size="large">Save</Button> */}
-
-                              </CardActionArea>
-                            </Card>
-
-                          )))
-                        }
-                      </Carousel>
-                    </div>
-
-                  </Grid>
-
-                  {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+                <Grid item xs={4}>
+                  <h1 style={{ textAlign: "center" }}>Movies</h1>
+                  <div className="carousel">
+                    <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}>
+                      {
+                        (name.map((movie, index) => (
 
 
-                  <Grid item xs={6}>
-                    <h1 style={{ textAlign: "center" }}>Favorites</h1>
-                    {
-
-                      (favorites.toReversed().map((movs, i) => (
-
-
-                        <span className="card" key={movs.id}>
-                          {/* <Grid item xs={2}> */}
-                          <Card
-                            sx={{  maxWidth:250 }}
-                            style={{ display: "flex" }}
-                          >
-
-                            <div
-                              onMouseEnter={() => showButton(i)}
-                              onMouseLeave={hideButton}>
-
-                              {/* <Card> */}
+                          <Card key={movie.id}  >
+                            <CardActionArea onClick={() => saveMovie(movie.Poster)}>
                               <CardMedia
-
-                                style={{
-                                  marginLeft: "auto",
-                                  marginRight: "auto",
-                                  // width: "50%",
-                                  height: "auto",
-                                  zIndex: "1",
-                                }}
                                 className="example"
                                 component="img"
-                                // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                                 alt="The house from the offer."
-                                image={movs.movPoster}
-
+                                src={movie.Poster}
                               />
 
-                              {/* </Card> */}
+                              {/* <Button size="large">Save</Button> */}
 
-                              {/* <Butt display={see === i? 'block':'none'} /> */}
-
-
-
-
-                              <Button
-
-                                style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                                Delete HERE</Button>
-
-                            </div>
+                            </CardActionArea>
                           </Card>
-                          {/* </Grid> */}
-                        </span>
+
+                        )))
+                      }
+                    </Carousel>
+                  </div>
+
+                </Grid>
+
+                {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+
+
+                <Grid item xs={8}>
+                  <h1 style={{ textAlign: "center" }}>Favorites</h1>
+                  <Grid container space={1}>
+                  {
+                    
+                   (favorites.toReversed().map((movs, i) => (
+
+
+                      <Grid item className="card" key={movs.id}>
+                        {/* <Grid item xs={2}> */}
+                        <Card
+                          sx={{ minWidth: 200, maxWidth: 200 }}
+                          style={{ display: "flex" }}
+                        >
+
+                          <div
+                            onMouseEnter={() => showButton(i)}
+                            onMouseLeave={hideButton}>
+
+                            {/* <Card> */}
+                            <CardMedia
+
+                              style={{
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                // width: "50%",
+                                height: "auto",
+                                zIndex: "1",
+                              }}
+                              className="example"
+                              component="img"
+                              // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                              alt="The house from the offer."
+                              image={movs.movPoster}
+
+                            />
+
+                            {/* </Card> */}
+
+                            {/* <Butt display={see === i? 'block':'none'} /> */}
+
+
+
+
+                            <Button
+
+                              style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                              Delete HERE</Button>
+
+                          </div>
+                        </Card>
+                        {/* </Grid> */}
+                      </Grid>
 
 
 
                       )))
-                    }
-
-                  </Grid>
-
+                    // </div>
+                  }
+                </Grid>
                 </Grid>
 
+              </Grid>
 
 
 
@@ -311,9 +312,10 @@ id="sign"
 
 
 
-              }
 
-              {/* </Grid> */}
+            }
+
+            {/* </Grid> */}
 
 
 
