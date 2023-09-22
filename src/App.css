@@ -46,9 +46,9 @@
    
 } */
 
-.poster {
-  max-width: 50%;
-}
+/* .poster {
+  max-width: 100%;
+} */
 
 /* img {
   max-height: 500px;
@@ -78,17 +78,21 @@ justify-content: center;
 img {
   justify-content: left;
 
- min-height: 330px !important;
+  min-height: 330px !important;
   margin-left: 5px !important;
   width: 200px;
 }
-.img {
+/* .img {
   width: 50%;
-}
+} */
 
 .card {
-  text-align: left !important;
+  /* text-align: left !important; */
+  display: flex;
+  flex: 1;
 }
+
+
 
 .notdisplayed {
   display: none;

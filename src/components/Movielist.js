@@ -247,9 +247,10 @@ id="sign"
 
 
                         <span className="card" key={movs.id}>
+                          {/* <Grid item xs={2}> */}
                           <Card
-                            sx={{ minWidth: 200 }}
-                            style={{ position: "relative", width: "100%" }}
+                            sx={{  maxWidth:250 }}
+                            style={{ display: "flex" }}
                           >
 
                             <div
@@ -262,7 +263,7 @@ id="sign"
                                 style={{
                                   marginLeft: "auto",
                                   marginRight: "auto",
-                                  width: "50%",
+                                  // width: "50%",
                                   height: "auto",
                                   zIndex: "1",
                                 }}
@@ -288,6 +289,7 @@ id="sign"
 
                             </div>
                           </Card>
+                          {/* </Grid> */}
                         </span>
 
 
