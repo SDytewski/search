@@ -18,26 +18,18 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { Paper } from '@mui/material';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { grey, purple, red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 
-const primary = {
-  main: '#000000',
-  light: '#42a5f5',
-  dark: '#1565c0',
-  contrastText: '#fff',
-};
 
 // const theme = createTheme({
 //   palette: {
-//     anger: createColor('#F40B27'),
-//     apple: createColor('#5DBA40'),
-//     steelBlue: createColor('#5C76B7'),
-//     violet: createColor('#BC00A3'),
-//   },
+//     primary: red,
+//     secondary: purple
+//   }
 // });
-
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -137,6 +129,7 @@ function Movielist() {
   }
 
   return (
+    // <ThemeProvider theme={theme}>
 
     <Container maxWidth="lg">
       <Box sx={{ flexGrow: 1 }} padding={2} >
@@ -148,13 +141,17 @@ function Movielist() {
             {/* <div className='container-fluid movie-app'>
               <div className='search'> */}
 
-<Typography variant="h2" backgroundColor= {primary.main} color="common.white" padding={5}
+<Typography variant="h2" color="common.white" padding={10}
 align="center"
 
 id="sign"
 
+
 >MOVIE LIST
+
 </Typography>
+
+
 <Grid
   container
   spacing={0}
@@ -188,7 +185,7 @@ id="sign"
 
                   <Button className="add-button" color="error" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
                     Send
-                  </Button>
+                  </Button>{}
 
                 </form>
                 </Grid>
@@ -324,6 +321,7 @@ id="sign"
         </Grid>
       </Box>
     </Container>
+    // </ThemeProvider>
 
   );
 }

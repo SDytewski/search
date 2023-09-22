@@ -97,11 +97,107 @@ img {
 .displayed {
   display: block;  
 }
+
   
-#sign{
-  box-shadow: 10px 10px 10px 10px rgb(164, 227, 227);
+/* #sign{
+  /* box-shadow: 10px 10px 10px 10px rgb(164, 227, 227);
   border-radius: 5px;
+  border: 10px dotted #ffff7c;
+  outline: 2px solid #000000; */
+
+
+  /* background: 
+  linear-gradient(90deg, #f7f790 80%, transparent 0) repeat-x,
+  linear-gradient(90deg, #f7f790 80%, transparent 0) repeat-x,
+  linear-gradient(0deg, #f7f790 80%, transparent 0) repeat-y,
+  linear-gradient(0deg, #f7f790 80%, transparent 0) repeat-y;
+background-size: 4px 5px, 4px 5px, 5px 4px, 5px 4px;
+background-position: 0 0, 0 100%, 0 0, 100% 0;
+animation: linearGradientMove .3s infinite linear;
+background-color: black; */
+  
+ 
+#sign {
+  position: relative;
+  margin: auto;
+  font-family: 'Limelight', cursive;
+
+  line-height: 64px;
+  text-align: center;
+  color: #fff;
+  /* font-size: 20px; */
+  border: 20px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 10px rgb(122, 126, 125);
+  background: rgb(0, 0, 0);
+  transition: all .3s;
+  cursor: pointer;
+  
+  &:hover {
+      filter: contrast(1.1);
+  }
+  
+  &:active {
+      filter: contrast(0.9);
+  }
+  
+  &::before,
+  &::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid rgb(252, 241, 178);
+      
+      transition: all .5s;
+      animation: clippath 3s infinite linear;
+      border-radius: 10px;
+  }
+  
+  &::after {
+      animation: clippath 3s infinite -1.5s linear;
+  }
 }
+
+@keyframes clippath {
+  0%,
+  100% {
+      clip-path: inset(0 0 98% 0);
+  }
+  
+  25% {
+      clip-path: inset(0 98% 0 0);
+  }
+  50% {
+      clip-path: inset(98% 0 0 0);
+  }
+  75% {
+      clip-path: inset(0 0 0 98%);
+  }
+}
+
+.bg::before {
+  background: rgba(255, 215, 0, .5);
+}
+
+  /* position: absolute; */
+  /* top: 200px;
+  left: 200px; */
+ 
+  /* display: inline-block;
+  /* width: 200px; */
+
+
+
+/* .marquee
+ {
+    -webkit-animation:spin 20s linear infinite;
+    -moz-animation:spin 20s linear infinite;
+    animation:spin 20s linear infinite;
+} */
+
 
 form {
   border: none;
