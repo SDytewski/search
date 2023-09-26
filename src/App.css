@@ -92,7 +92,9 @@ img {
   flex: 1; */
 /* } */
 
-
+/* .card {
+  width: 50%;
+} */
 
 .notdisplayed {
   display: none;
