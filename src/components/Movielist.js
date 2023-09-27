@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -13,15 +14,19 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Carousel from 'react-material-ui-carousel';
 import CardActionArea from '@mui/material/CardActionArea';
 import { Paper } from '@mui/material';
-import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { grey, purple, red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
+import Tabs from '@mui/material/Tabs';
+import {
+  Tab
+} from '@mui/material';
+import {
+  TabList,
+  TabContext, TabPanel
+} from '@mui/lab';
 
 
 // const theme = createTheme({
@@ -30,6 +35,7 @@ import { useForm } from "react-hook-form";
 //     secondary: purple
 //   }
 // });
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -43,6 +49,11 @@ const Item = styled(Paper)(({ theme }) => ({
 function Movielist() {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("John")
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
   // console.log(localStorage);
 
@@ -204,130 +215,123 @@ function Movielist() {
 
             {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <Tab label="Search Results" value="1" />
+                    <Tab label="Favorites" value="2" />
 
-
-              <Grid item xs={12}>
-                <h1 style={{ textAlign: "center" }}>Movies</h1>
-                <Grid container direction="row">
-                  {/* <div className="carousel">
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  <Grid item xs={12}>
+                    <h1 style={{ textAlign: "center" }}>Movies</h1>
+                    <Grid container direction="row">
+                      {/* <div className="carousel">
                     <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}> */}
-                  {
-                    (name.map((movie, index) => (
+                      {
+                        (name.map((movie, index) => (
 
-                      <Grid item className="card" key={movie.id} xs={3}  >
-                        <Card  
-                        sx={{minWidth: 200, maxWidth: 220 }}
-                        style={{ display: "flex" }}
+                          <Grid item className="card" key={movie.id} xs={3}  >
+                            <Card
+                              sx={{ minWidth: 200, maxWidth: 220 }}
+                              style={{ display: "flex" }}
 
-                        >
-                          <CardActionArea onClick={() => saveMovie(movie.Poster)}>
-                            <CardMedia
-                              className="example"
-                              component="img"
-                              sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                              alt="The house from the offer."
-                              src={movie.Poster}
-                            />
+                            >
+                              <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+                                <CardMedia
+                                  className="example"
+                                  component="img"
+                                  sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                  alt="The house from the offer."
+                                  src={movie.Poster}
+                                />
 
-                            {/* <Button size="large">Save</Button> */}
+                                {/* <Button size="large">Save</Button> */}
 
-                          </CardActionArea>
-                        </Card>
-                      </Grid>
+                              </CardActionArea>
+                            </Card>
+                          </Grid>
 
-                    )))
-                  }
-                  {/* </Carousel>
-                  </div> */}
+                        )))
+                      }
 
-                </Grid>
+                      {/* </Grid> */}
+                    </Grid>
+                    </Grid>
 
-                {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+                    {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
 
+                </TabPanel>
+                <TabPanel value="2">
+                  <Grid item xs={12}>
+                    <h1 style={{ textAlign: "center" }}>Favorites</h1>
+                    <Grid container space={1}>
+                      {
 
-                <Grid item xs={12}>
-                  <h1 style={{ textAlign: "center" }}>Favorites</h1>
-                  <Grid container space={1}>
-                    {
-
-                      (favorites.toReversed().map((movs, i) => (
-
-
-                        <Grid item className="card" key={movs.id}>
-                          {/* <Grid item xs={2}> */}
-                          <Card
-                            sx={{ minWidth: 200, maxWidth: 200 }}
-                            style={{ display: "flex" }}
-                          >
-
-                            <div
-                              onMouseEnter={() => showButton(i)}
-                              onMouseLeave={hideButton}>
-
-                              {/* <Card> */}
-                              <CardMedia
-
-                                style={{
-                                  marginLeft: "auto",
-                                  marginRight: "auto",
-                                  // width: "50%",
-                                  height: "auto",
-                                  zIndex: "1",
-                                }}
-                                className="example"
-                                component="img"
-                                // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                alt="The house from the offer."
-                                image={movs.movPoster}
-
-                              />
-
-                              {/* </Card> */}
-
-                              {/* <Butt display={see === i? 'block':'none'} /> */}
+                        (favorites.toReversed().map((movs, i) => (
 
 
+                          <Grid item className="card" key={movs.id}>
+                            {/* <Grid item xs={2}> */}
+                            <Card
+                              sx={{ minWidth: 200, maxWidth: 200 }}
+                              style={{ display: "flex" }}
+                            >
 
+                              <div
+                                onMouseEnter={() => showButton(i)}
+                                onMouseLeave={hideButton}>
 
-                              <Button
+                                {/* <Card> */}
+                                <CardMedia
 
-                                style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                                Delete HERE</Button>
+                                  style={{
+                                    marginLeft: "auto",
+                                    marginRight: "auto",
+                                    // width: "50%",
+                                    height: "auto",
+                                    zIndex: "1",
+                                  }}
+                                  className="example"
+                                  component="img"
+                                  // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                  alt="The house from the offer."
+                                  image={movs.movPoster}
 
-                            </div>
-                          </Card>
-                          {/* </Grid> */}
-                        </Grid>
+                                />
+
+                                {/* </Card> */}
+
+                                {/* <Butt display={see === i? 'block':'none'} /> */}
 
 
 
-                      )))
-                      // </div>
-                    }
+
+                                <Button
+
+                                  style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                                  Delete HERE</Button>
+
+                              </div>
+                            </Card>
+                            {/* </Grid> */}
+                          </Grid>
+
+
+
+                        )))
+                        // </div>
+                      }
+                    </Grid>
                   </Grid>
-                </Grid>
-
-              </Grid>
-
-
-
-
-
-
-
-
-
-
-
+                </TabPanel>
+              </TabContext>
             }
 
-            {/* </Grid> */}
 
-
-
-            {/* </div > */}
           </Grid>
-
+        
         </Grid>
       </Box>
     </Container>
