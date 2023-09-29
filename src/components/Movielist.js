@@ -9,9 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -19,7 +17,9 @@ import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import Tabs from '@mui/material/Tabs';
+
 import {
   Tab
 } from '@mui/material';
@@ -50,6 +50,7 @@ function Movielist() {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("John")
   const [value, setValue] = React.useState(0);
+  const [star, setStar] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -125,11 +126,14 @@ function Movielist() {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
+        alert("movie added to favorites!")
+        setStar(true)
         console.log(shows.movPoster);
 
         const returnValue = [...film, shows];
 
         return returnValue;
+        
 
       });
     }
@@ -247,7 +251,7 @@ function Movielist() {
                                   src={movie.Poster}
                                 />
 
-                                {/* <Button size="large">Save</Button> */}
+                           {star ?  <FavoriteIcon color="error"/>  : <p>No Favorite</p>}
 
                               </CardActionArea>
                             </Card>
