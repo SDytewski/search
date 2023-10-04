@@ -248,7 +248,7 @@ function Movielist() {
 
                             >
                               
-                              <CardActionArea onClick={() => {saveMovie(movie.Poster); setStar(movie.id)}}> 
+                              <CardActionArea onClick={() => {saveMovie(movie.Poster, setStar(movie.Poster))}}> 
                                 
                               
                                 <CardMedia
@@ -258,7 +258,7 @@ function Movielist() {
                                   alt="The house from the offer."
                                   src={movie.Poster}
                                 />
-                               {movie.id === star ?  <p>favorite</p>  : (<p>No Favorite</p>)}
+                               {movie.Poster === star ?   <FavoriteIcon color="error"/> : (<p>No Favorite</p>)}
 
                         
                               </CardActionArea>
