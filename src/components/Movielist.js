@@ -16,7 +16,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Tabs from '@mui/material/Tabs';
 
@@ -50,7 +50,7 @@ function Movielist() {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("John")
   const [value, setValue] = React.useState(0);
-  const [star, setStar] = useState(false);
+  const [star, setStar] = useState(null);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -67,6 +67,7 @@ function Movielist() {
     setSee(i);
   };
   const [searchTerm, setSearchTerm] = useState('');
+  // const[setEditing, setIsEditing] = useState(false);
 
   const [favorites, setFavorites] = useState([]);
   const {
@@ -120,17 +121,21 @@ function Movielist() {
     var r = favorites.some(i => i.movPoster.includes(poster));
 
     // (!favorites[item].movPoster === yolo) 
-    if (!r) {
+    if (!r) 
+    {
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
         alert("movie added to favorites!")
-        setStar(true)
+        
         console.log(shows.movPoster);
+        // setStar(movPoster);
 
         const returnValue = [...film, shows];
+
+        
 
         return returnValue;
         
@@ -242,7 +247,10 @@ function Movielist() {
                               style={{ display: "flex" }}
 
                             >
-                              <CardActionArea onClick={() => saveMovie(movie.Poster)}>
+                              
+                              <CardActionArea onClick={() => {saveMovie(movie.Poster); setStar(movie.id)}}> 
+                                
+                              
                                 <CardMedia
                                   className="example"
                                   component="img"
@@ -250,9 +258,9 @@ function Movielist() {
                                   alt="The house from the offer."
                                   src={movie.Poster}
                                 />
+                               {movie.id === star ?  <p>favorite</p>  : (<p>No Favorite</p>)}
 
-                           {star ?  <FavoriteIcon color="error"/>  : <p>No Favorite</p>}
-
+                        
                               </CardActionArea>
                             </Card>
                           </Grid>
