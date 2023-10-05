@@ -1,6 +1,12 @@
 /* .App {
   text-align: center;
 } */
+#row {
+	overflow-x: auto;
+	flex-wrap: nowrap;
+}
+
+
 
 .App-logo {
   height: 40vmin;

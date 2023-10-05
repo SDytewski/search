@@ -121,24 +121,23 @@ function Movielist() {
     var r = favorites.some(i => i.movPoster.includes(poster));
 
     // (!favorites[item].movPoster === yolo) 
-    if (!r) 
-    {
+    if (!r) {
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
         alert("movie added to favorites!")
-        
+
         console.log(shows.movPoster);
-        // setStar(movPoster);
+        //  setStar(shows.movPoster);
 
         const returnValue = [...film, shows];
 
-        
+
 
         return returnValue;
-        
+
 
       });
     }
@@ -224,126 +223,123 @@ function Movielist() {
 
             {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
-              <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <TabList onChange={handleChange} aria-label="lab API tabs example">
-                    <Tab label="Search Results" value="1" />
-                    <Tab label="Favorites" value="2" />
 
-                  </TabList>
-                </Box>
-                <TabPanel value="1">
-                  <Grid item xs={12}>
-                    <h1 style={{ textAlign: "center" }}>Movies</h1>
-                    <Grid container direction="row">
-                      {/* <div className="carousel">
+              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+
+
+
+                <Grid item xs={12}>
+                  <h1 style={{ textAlign: "center" }}>Movies</h1>
+                  <Grid container direction="row" id="row">
+                    {/* <div className="carousel">
                     <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}> */}
-                      {
-                        (name.map((movie, index) => (
+                    {
+                      (name.map((movie, index) => (
 
-                          <Grid item className="card" key={movie.id} xs={3}  >
-                            <Card
-                              sx={{ minWidth: 200, maxWidth: 220 }}
-                              style={{ display: "flex" }}
+                        <Grid item className="card" key={movie.id} xs={3}  >
+                          <Card
+                            sx={{ minWidth: 200, maxWidth: 220 }}
+                            style={{ display: "flex" }}
 
-                            >
-                              
-                              <CardActionArea onClick={() => {saveMovie(movie.Poster, setStar(movie.Poster))}}> 
-                                
-                              
-                                <CardMedia
-                                  className="example"
-                                  component="img"
-                                  sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                  alt="The house from the offer."
-                                  src={movie.Poster}
-                                />
-                               {movie.Poster === star ?   <FavoriteIcon color="error"/> : (<p>No Favorite</p>)}
+                          >
 
-                        
-                              </CardActionArea>
-                            </Card>
-                          </Grid>
+                            <CardActionArea onClick={() => { saveMovie(movie.Poster, setStar) }}>
 
-                        )))
-                      }
 
+                              <CardMedia
+                                className="example"
+                                component="img"
+                                sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                alt="The house from the offer."
+                                src={movie.Poster}
+                              />
+                              {movie.Poster === star ? <FavoriteIcon color="error" /> : (<p>No Favorite</p>)}
+
+
+                            </CardActionArea>
+                          </Card>
+                        </Grid>
+
+                      )))
+                    }
+
+                    {/* </Grid> */}
+                  </Grid>
+                </Grid>
+              </Box>
+            }
+
+            {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
+
+
+            <Grid item xs={12}>
+              <h1 style={{ textAlign: "center" }}>Favorites</h1>
+              <Grid container className="row" space={1}>
+                {
+
+                  (favorites.toReversed().map((movs, i) => (
+
+
+                    <Grid item className="card" key={movs.id}>
+                      {/* <Grid item xs={2}> */}
+                      <Card
+                        sx={{ minWidth: 200, maxWidth: 200 }}
+                        style={{ display: "flex" }}
+                      >
+
+                        <div
+                          onMouseEnter={() => showButton(i)}
+                          onMouseLeave={hideButton}>
+
+                          {/* <Card> */}
+                          <CardMedia
+
+                            style={{
+                              marginLeft: "auto",
+                              marginRight: "auto",
+                              // width: "50%",
+                              height: "auto",
+                              zIndex: "1",
+                            }}
+                            className="example"
+                            component="img"
+                            // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                            alt="The house from the offer."
+                            image={movs.movPoster}
+
+                          />
+
+                          {/* </Card> */}
+
+                          {/* <Butt display={see === i? 'block':'none'} /> */}
+
+
+
+
+                          <Button
+
+                            style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                            Delete HERE</Button>
+
+                        </div>
+                      </Card>
                       {/* </Grid> */}
                     </Grid>
-                    </Grid>
-
-                    {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
-
-                </TabPanel>
-                <TabPanel value="2">
-                  <Grid item xs={12}>
-                    <h1 style={{ textAlign: "center" }}>Favorites</h1>
-                    <Grid container space={1}>
-                      {
-
-                        (favorites.toReversed().map((movs, i) => (
-
-
-                          <Grid item className="card" key={movs.id}>
-                            {/* <Grid item xs={2}> */}
-                            <Card
-                              sx={{ minWidth: 200, maxWidth: 200 }}
-                              style={{ display: "flex" }}
-                            >
-
-                              <div
-                                onMouseEnter={() => showButton(i)}
-                                onMouseLeave={hideButton}>
-
-                                {/* <Card> */}
-                                <CardMedia
-
-                                  style={{
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    // width: "50%",
-                                    height: "auto",
-                                    zIndex: "1",
-                                  }}
-                                  className="example"
-                                  component="img"
-                                  // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                  alt="The house from the offer."
-                                  image={movs.movPoster}
-
-                                />
-
-                                {/* </Card> */}
-
-                                {/* <Butt display={see === i? 'block':'none'} /> */}
 
 
 
-
-                                <Button
-
-                                  style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                                  Delete HERE</Button>
-
-                              </div>
-                            </Card>
-                            {/* </Grid> */}
-                          </Grid>
+                  )))
+                  // </div>
+                }
+              </Grid>
+            </Grid>
 
 
 
-                        )))
-                        // </div>
-                      }
-                    </Grid>
-                  </Grid>
-                </TabPanel>
-              </TabContext>
-            }
 
 
           </Grid>
-        
+
         </Grid>
       </Box>
     </Container>
