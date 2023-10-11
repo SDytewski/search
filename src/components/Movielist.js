@@ -1,32 +1,9 @@
 import { useState, useEffect } from 'react';
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import CardActionArea from '@mui/material/CardActionArea';
-import { Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import { set, useForm } from "react-hook-form";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import Tabs from '@mui/material/Tabs';
 
-import {
-  Tab
-} from '@mui/material';
-import {
-  TabList,
-  TabContext, TabPanel
-} from '@mui/lab';
+import { set, useForm } from "react-hook-form";
+
+
 
 
 // const theme = createTheme({
@@ -37,13 +14,6 @@ import {
 // });
 
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 
 function Movielist() {
@@ -150,17 +120,17 @@ function Movielist() {
   return (
     // <ThemeProvider theme={theme}>
 
-    <Container maxWidth="lg">
-      <Box sx={{ flexGrow: 1 }} padding={2} >
-        <Grid container spacing={2} >
+    <div>
+      <div>
+        <div >
 
-          <Grid item xs={12}>
+          <div>
 
             {/* <Item> */}
             {/* <div className='container-fluid movie-app'>
               <div className='search'> */}
 
-            <Typography variant="h2" color="common.white"
+            <h1
               align="center"
 
               id="sign"
@@ -168,21 +138,14 @@ function Movielist() {
 
             >MOVIE LIST
 
-            </Typography>
+            </h1>
 
 
-            <Grid
-              container
-              spacing={0}
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-            // sx={{ minHeight: '100vh' }}
-            >
-              <Grid item xs={3}>
+            <div>
+              <div>
                 <form onSubmit={handleSubmit(onSubmit)} >
 
-                  <TextField id="outlined-basic"
+                  <idv id="outlined-basic"
                     type="text"
                     name="movie"
                     value={searchTerm}
@@ -202,13 +165,13 @@ function Movielist() {
                     }} />
 
 
-                  <Button className="add-button" color="error" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
+                  <button className="add-button" color="error" variant="contained" type="submit" sx={{ ml: 2, mt: 3, p: 2, }} onSubmit={(e) => names(searchTerm)}>
                     Send
-                  </Button>{ }
+                  </button>{ }
 
                 </form>
-              </Grid>
-            </Grid>
+              </div>
+            </div>
             {/* </Item> */}
 
             {/* <div id="people">
@@ -224,65 +187,65 @@ function Movielist() {
             {name.length === 0 ? (<h1>no movies loaded</h1>) :
 
 
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <div>
 
 
 
-                <Grid item xs={12}>
+                <div>
                   <h1 style={{ textAlign: "center" }}>Movies</h1>
-                  <Grid container direction="row" id="row">
+                  <div direction="row" id="row">
                     {/* <div className="carousel">
                     <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}> */}
                     {
                       (name.map((movie, index) => (
 
-                        <Grid item className="card" key={movie.id} xs={3}  >
-                          <Card
+                        <div>
+                          <div
                             sx={{ minWidth: 200, maxWidth: 220 }}
                             style={{ display: "flex" }}
 
                           >
 
-                            <CardActionArea onClick={() => { saveMovie(movie.Poster, setStar) }}>
+                            <div onClick={() => { saveMovie(movie.Poster, setStar) }}>
 
 
-                              <CardMedia
+                              <div
                                 className="example"
                                 component="img"
                                 sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                                 alt="The house from the offer."
                                 src={movie.Poster}
                               />
-                              {movie.Poster === star ? <FavoriteIcon color="error" /> : (<p>No Favorite</p>)}
+                              {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
 
 
-                            </CardActionArea>
-                          </Card>
-                        </Grid>
+                            </div>
+                          </div>
+                        </div>
 
                       )))
                     }
 
                     {/* </Grid> */}
-                  </Grid>
-                </Grid>
-              </Box>
+                  </div>
+                </div>
+              </div>
             }
 
             {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
 
 
-            <Grid item xs={12}>
+            <div xs={12}>
               <h1 style={{ textAlign: "center" }}>Favorites</h1>
-              <Grid container className="row" space={1}>
+              <div container className="row" space={1}>
                 {
 
                   (favorites.toReversed().map((movs, i) => (
 
 
-                    <Grid item className="card" key={movs.id}>
+                    <div className="card" key={movs.id}>
                       {/* <Grid item xs={2}> */}
-                      <Card
+                      <div
                         sx={{ minWidth: 200, maxWidth: 200 }}
                         style={{ display: "flex" }}
                       >
@@ -292,7 +255,7 @@ function Movielist() {
                           onMouseLeave={hideButton}>
 
                           {/* <Card> */}
-                          <CardMedia
+                          <div
 
                             style={{
                               marginLeft: "auto",
@@ -316,33 +279,33 @@ function Movielist() {
 
 
 
-                          <Button
+                          <button
 
                             style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                            Delete HERE</Button>
+                            Delete HERE</button>
 
                         </div>
-                      </Card>
+                      </div>
                       {/* </Grid> */}
-                    </Grid>
+                    </div>
 
 
 
                   )))
                   // </div>
                 }
-              </Grid>
-            </Grid>
+              </div>
+            </div>
 
 
 
 
 
-          </Grid>
+          </div>
 
-        </Grid>
-      </Box>
-    </Container>
+        </div>
+      </div>
+    </div>
     // </ThemeProvider>
 
   );
