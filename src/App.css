@@ -8,6 +8,9 @@
 
 
 
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -33,6 +36,10 @@
 .App-link {
   color: #61dafb;
 }
+
+/* .img {
+  min-width: 800px !important;
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -60,10 +67,10 @@
   max-height: 500px;
 } */
 
-.carousel {
+/* .carousel {
 display: flex;
 justify-content: center;
-}
+} */
 
 /* .media {
   display: flex;
@@ -81,13 +88,13 @@ justify-content: center;
  
   background-color: black;
 } */
-img {
+/* img {
   justify-content: left;
 
   min-height: 330px !important;
   margin-left: 5px !important;
   width: 200px;
-}
+} */
 /* .img {
   width: 50%;
 } */
@@ -102,13 +109,13 @@ img {
   width: 50%;
 } */
 
-.notdisplayed {
+/* .notdisplayed {
   display: none;
 }
 
 .displayed {
   display: block;  
-}
+} */
 
   
 /* #sign{
@@ -215,45 +222,10 @@ form {
   border: none;
 }
 @media (max-width: 550px) {
-  .media {
+  /* .media {
     width: 46%;
-  }
+  } */
 
 
 }
 
-.row {
-  margin-left: 20px;
-  color: white;
-}
-
-.row__posters {
-  display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding: 20px;
-}
-
-.row__posters::-webkit-scrollbar {
-  display: none;
-}
-
-.row__poster {
-  width: 100%;
-  object-fit: contain;
-  max-height: 100px;
-  margin-right: 10px;
-  transition: transform 450ms;
-}
-
-.row__posterLarge {
-  max-height: 250px;
-}
-
-.row__posterLarge:hover {
-  transform: scale(1.09);
-}
-
-.row__poster:hover {
-  transform: scale(1.08);
-}
