@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { TERipple } from 'tw-elements-react';
 import { set, useForm } from "react-hook-form";
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 
 
@@ -144,12 +145,12 @@ function Movielist() {
 
 
             <div>
-            
-            <div className="p-8 md:w-96 mx-auto">
+
+              <div className="p-8 md:w-96 mx-auto">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                
-                  <input 
-                   className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+
+                  <input
+                    className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
                     type="search"
                     name="movie"
                     value={searchTerm}
@@ -165,19 +166,20 @@ function Movielist() {
                     helperText={errors?.email ? errors.email.message : null}
                     sx={{ ml: 1, mt: 1, p: 2, }}
                     onChange={(e) => {
-                      setSearchTerm(e.target.value);  }} 
-                   />
+                      setSearchTerm(e.target.value);
+                    }}
+                  />
 
                   <TERipple>
-                  <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) =>{ names(searchTerm); handleSubmit(onSubmit)}}>
-                    Send
-                  </button>
+                    <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
+                      Send
+                    </button>
                   </TERipple>
-            
+
 
                 </div>
-                </div>
-              
+              </div>
+
             </div>
             {/* </Item> */}
 
@@ -199,11 +201,11 @@ function Movielist() {
 
 
                 <div>
-                  <h1 align="center"  className="text-4xl pb-2">Movies</h1>
-                  <div className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+                  <h1 align="center" className="text-4xl pb-2">Movies</h1>
+                  <div>
                     
-                    {/* <div className="carousel">
-                    <Carousel animation="fade" navButtonsAlwaysVisible autoPlay={false} sx={{ maxHeight: 650, width: '50%' }}> */}
+                    <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+                    <MdChevronLeft size={40} className="ml-10"/>
                     {
                       (name.map((movie, index) => (
 
@@ -214,20 +216,21 @@ function Movielist() {
 
                         //   >
 
-                            <div className="shrink-0" onClick={() => { saveMovie(movie.Poster, setStar) }}>
+                        <div id="space" >
 
 
-                              <img
-                                className="min-w-[160px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                                // component="img"
-                                // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                alt="The house from the offer."
-                                src={movie.Poster}
-                              />
-                              {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
+                          <img
+                            className="min-w-[160px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                            // component="img"
+                            // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                            alt="The house from the offer."
+                            src={movie.Poster}
+                            onClick={() => { saveMovie(movie.Poster, setStar) }}
+                          />
+                          {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
 
 
-                            </div>
+                        </div>
                         //   </div>
                         // </div>
 
@@ -235,6 +238,9 @@ function Movielist() {
                     }
 
                     {/* </Grid> */}
+                    <MdChevronRight size={40}/>
+                    </div>
+                   
                   </div>
                 </div>
               </div>
