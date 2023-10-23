@@ -205,7 +205,7 @@ function Movielist() {
                   <div>
                     
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
-                    <MdChevronLeft size={40} className="ml-10"/>
+                    <div><MdChevronLeft size={40}/></div>
                     {
                       (name.map((movie, index) => (
 
@@ -238,7 +238,7 @@ function Movielist() {
                     }
 
                     {/* </Grid> */}
-                    <MdChevronRight size={40}/>
+                    <div> <MdChevronRight size={40}/> </div>
                     </div>
                    
                   </div>
