@@ -202,10 +202,10 @@ function Movielist() {
 
                 <div>
                   <h1 align="center" className="text-4xl pb-2">Movies</h1>
-                  <div>
-                    
+                  <div className='relative flex items-center'>
+                  <div><MdChevronLeft size={40}/></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
-                    <div><MdChevronLeft size={40}/></div>
+                    
                     {
                       (name.map((movie, index) => (
 
@@ -238,9 +238,9 @@ function Movielist() {
                     }
 
                     {/* </Grid> */}
-                    <div> <MdChevronRight size={40}/> </div>
+                  
                     </div>
-                   
+                    <div> <MdChevronRight size={40}/> </div>
                   </div>
                 </div>
               </div>
