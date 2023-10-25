@@ -229,13 +229,14 @@ form {
 
 }
 
-/* #space{
+/* #space{ */
  
-  left:0;
-  top:0;
-  height:50px;
-  right:0;
+  /* left:0;
+  top:0; */
+  /* min-height:150px;
+  max-height: 160px; */
+  /* right:0;
   background-color:blue;
-  width: 40px;
+  width: 40px; */
 
-} */
+/* } */

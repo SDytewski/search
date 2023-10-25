@@ -229,11 +229,11 @@ function Movielist() {
 
                         //   >
 
-                        <div id="space" >
+                        <div>
 
 
                           <img
-                            className="min-w-[160px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             // component="img"
                             // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="The house from the offer."
