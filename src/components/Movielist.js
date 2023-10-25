@@ -28,6 +28,19 @@ function Movielist() {
     setValue(newValue);
   };
 
+
+  const slideLeft = () => {
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft -500;
+
+  }
+
+  const slideRight = () => {
+    var slider = document.getElementById('slider')
+    slider.scrollLeft = slider.scrollLeft + 500;
+
+  }
+
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
@@ -203,7 +216,7 @@ function Movielist() {
                 <div>
                   <h1 align="center" className="text-4xl pb-2">Movies</h1>
                   <div className='relative flex items-center'>
-                  <div><MdChevronLeft size={40}/></div>
+                  <div className = 'opacity-50 cursor-pointer hover:opacity-100'onClick ={slideLeft}><MdChevronLeft size={40}/></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                     
                     {
@@ -240,7 +253,7 @@ function Movielist() {
                     {/* </Grid> */}
                   
                     </div>
-                    <div> <MdChevronRight size={40}/> </div>
+                    <div className = 'opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40}/> </div>
                   </div>
                 </div>
               </div>
