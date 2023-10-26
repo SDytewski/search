@@ -31,7 +31,7 @@ function Movielist() {
 
   const slideLeft = () => {
     var slider = document.getElementById('slider')
-    slider.scrollLeft = slider.scrollLeft -500;
+    slider.scrollLeft = slider.scrollLeft - 500;
 
   }
 
@@ -77,7 +77,7 @@ function Movielist() {
   };
 
   const names = async (title) => {
-  
+
     const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
     const data = await response.json();
     // const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
@@ -85,12 +85,12 @@ function Movielist() {
     //fetching my data from the API and making it dynamic with the title parameter
 
     // console.log(data.Search);
-   
+
     setName(data.Search);
     setSearchTerm('')
-    
 
-    
+
+
     //using the setName mathod to search my data in an object that contains an array of movies
 
   }
@@ -221,44 +221,48 @@ function Movielist() {
                 <div>
                   <h1 align="center" className="text-4xl pb-2">Movies</h1>
                   <div className='relative flex items-center'>
-                  <div className = 'opacity-50 cursor-pointer hover:opacity-100'onClick ={slideLeft}><MdChevronLeft size={40}/></div>
+                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
-                    {name ?
-                    
-                      (name.map((movie, index) => (
+                      {name ?
 
-                        // <div>
-                        //   <div
-                        //     sx={{ minWidth: 200, maxWidth: 220 }}
-                        //     style={{ display: "flex" }}
+                        (name.map((movie, index) => (
 
-                        //   >
+                          // <div>
+                          //   <div
+                          //     sx={{ minWidth: 200, maxWidth: 220 }}
+                          //     style={{ display: "flex" }}
 
-                        <div>
+                          //   >
 
-
-                          <img
-                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                            // component="img"
-                            // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                            alt="The house from the offer."
-                            src={movie.Poster}
-                            onClick={() => { saveMovie(movie.Poster, setStar) }}
-                          />
-                          {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
+                          <div>
 
 
-                        </div>
-                        //   </div>
-                        // </div>
+                            <img
+                              className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                              // component="img"
+                              // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                              alt="The house from the offer."
+                              src={movie.Poster}
+                              onClick={() => { saveMovie(movie.Poster, setStar) }}
+                            />
+                            {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
 
-                      )))
-                    
-                 : <p>No Movies Found</p> }
-                    {/* </Grid> */}
-                  
+
+                          </div>
+                          //   </div>
+                          // </div>
+
+                        )))
+
+                        :
+                        <h1 className="text-7xl text-gray-800 uppercase tracking-wide text-center">
+                          No Movies Found
+                        </h1>
+                      }
+                      {/* </Grid> */}
+
                     </div>
-                    <div className = 'opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40}/> </div>
+                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
                   </div>
                 </div>
               </div>
