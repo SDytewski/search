@@ -77,6 +77,7 @@ function Movielist() {
   };
 
   const names = async (title) => {
+  
     const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
     const data = await response.json();
     // const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
@@ -84,8 +85,12 @@ function Movielist() {
     //fetching my data from the API and making it dynamic with the title parameter
 
     // console.log(data.Search);
+   
     setName(data.Search);
     setSearchTerm('')
+    
+
+    
     //using the setName mathod to search my data in an object that contains an array of movies
 
   }
@@ -206,7 +211,7 @@ function Movielist() {
             {/* </div> */}
 
 
-            {name.length === 0 ? (<h1>no movies loaded</h1>) :
+            {name?.length === 0 ? (<h1>no movies loaded</h1>) :
 
 
               <div>
@@ -218,8 +223,8 @@ function Movielist() {
                   <div className='relative flex items-center'>
                   <div className = 'opacity-50 cursor-pointer hover:opacity-100'onClick ={slideLeft}><MdChevronLeft size={40}/></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+                    {name ?
                     
-                    {
                       (name.map((movie, index) => (
 
                         // <div>
@@ -248,8 +253,8 @@ function Movielist() {
                         // </div>
 
                       )))
-                    }
-
+                    
+                 : <p>No Movies Found</p> }
                     {/* </Grid> */}
                   
                     </div>
