@@ -5,28 +5,11 @@ import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 
-
-
-
-// const theme = createTheme({
-//   palette: {
-//     primary: red,
-//     secondary: purple
-//   }
-// });
-
-
-
-
 function Movielist() {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("John")
   const [value, setValue] = React.useState(0);
   const [star, setStar] = useState(null);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
 
 
   const slideLeft = () => {
@@ -52,8 +35,6 @@ function Movielist() {
     setSee(i);
   };
   const [searchTerm, setSearchTerm] = useState('');
-  // const[setEditing, setIsEditing] = useState(false);
-
   const [favorites, setFavorites] = useState([]);
   const {
     register,
@@ -80,18 +61,12 @@ function Movielist() {
 
     const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
     const data = await response.json();
-    // const response = await fetch('http://www.omdbapi.com/?s=her&apikey=32e96066');
-
     //fetching my data from the API and making it dynamic with the title parameter
 
     // console.log(data.Search);
 
     setName(data.Search);
     setSearchTerm('')
-
-
-
-    //using the setName mathod to search my data in an object that contains an array of movies
 
   }
 
@@ -102,9 +77,7 @@ function Movielist() {
     setFavorites(newFavorites)
 
   }
-  // }
 
-  // console.log(name);
 
   const saveMovie = (poster) => {
 
@@ -138,24 +111,18 @@ function Movielist() {
   }
 
   return (
-    // <ThemeProvider theme={theme}>
-
+  
     <div>
       <div>
         <div >
 
           <div className="p-4">
 
-            {/* <Item> */}
-            {/* <div className='container-fluid movie-app'>
-              <div className='search'> */}
-
             <h1
               align="center"
 
               id="sign"
               className="text-7xl p-8"
-
 
             >MOVIE LIST
 
@@ -199,13 +166,6 @@ function Movielist() {
               </div>
 
             </div>
-            {/* </Item> */}
-
-            {/* <div id="people">
-          {person}
-        </div>
-        <button onClick={() => { setPerson("Bob") }}>Click</button> */}
-
 
             {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             {/* </div> */}
@@ -215,8 +175,6 @@ function Movielist() {
 
 
               <div>
-
-
 
                 <div>
                   <h1 align="center" className="text-4xl pb-2">Movies</h1>
@@ -241,7 +199,7 @@ function Movielist() {
                               className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                               // component="img"
                               // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                              alt="The house from the offer."
+                              alt="No Movie Image"
                               src={movie.Poster}
                               onClick={() => { saveMovie(movie.Poster, setStar) }}
                             />
@@ -291,20 +249,14 @@ function Movielist() {
                           onMouseLeave={hideButton}>
 
                           {/* <Card> */}
-                          <div
+                          <img
 
-                            style={{
-                              marginLeft: "auto",
-                              marginRight: "auto",
-                              // width: "50%",
-                              height: "auto",
-                              zIndex: "1",
-                            }}
+                          
                             className="example"
                             component="img"
                             // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="The house from the offer."
-                            image={movs.movPoster}
+                            src={movs.movPoster}
 
                           />
 
