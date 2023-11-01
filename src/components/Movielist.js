@@ -211,11 +211,13 @@ function Movielist() {
                           // </div>
 
                         )))
-
+                          
                         :
-                        <h1 className="text-7xl text-gray-800 uppercase tracking-wide text-center">
+                        
+                        <h1 align="center" className="text-7xl text-gray-800 uppercase tracking-wide text-center">
                           No Movies Found
                         </h1>
+                        
                       }
                       {/* </Grid> */}
 
@@ -231,18 +233,17 @@ function Movielist() {
 
             <div>
               <h1 align="center" className="text-4xl p-8">Favorites</h1>
-              <div container className="relative flex items-center">
+              <div className='relative flex items-center'>
+                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
+                    <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                 {
 
                   (favorites.toReversed().map((movs, i) => (
 
 
-                    <div className="card" key={movs.id}>
+                    <div key={movs.id}>
                       {/* <Grid item xs={2}> */}
-                      <div
-                        sx={{ minWidth: 200, maxWidth: 200 }}
-                        style={{ display: "flex" }}
-                      >
+                     
 
                         <div
                           onMouseEnter={() => showButton(i)}
@@ -273,7 +274,8 @@ function Movielist() {
                             Delete HERE</button>
 
                         </div>
-                      </div>
+                        
+                     
                       {/* </Grid> */}
                     </div>
 
@@ -283,6 +285,8 @@ function Movielist() {
                   // </div>
                 }
               </div>
+              <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
+            </div>
             </div>
 
 
