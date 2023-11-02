@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import * as React from 'react';
-// import { TERipple } from 'tw-elements-react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
@@ -131,7 +130,7 @@ function Movielist() {
 
             <div>
 
-              <div className="p-8 md:w-96 mx-auto">
+              <div className="mt-10 p-6 md:w-96 mx-auto">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
 
                   <input
@@ -155,11 +154,10 @@ function Movielist() {
                     }}
                   />
 
-                  {/* <TERipple> */}
                     <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
                       Send
                     </button>
-                  {/* </TERipple> */}
+                
 
 
                 </div>
@@ -177,7 +175,7 @@ function Movielist() {
               
 
                 <div>
-                  <h1 align="center" className="text-4xl p-8">Movies</h1>
+                  <h1 align="center" className="text-4xl p-4">Movies</h1>
                   <div className='relative flex items-center'>
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
@@ -213,10 +211,11 @@ function Movielist() {
                         )))
                           
                         :
-                        
-                        <h1 align="center" className="text-7xl text-gray-800 uppercase tracking-wide text-center">
+                        <div>
+                        <h1 align="center" className="text-4xl p-8">
                           No Movies Found
                         </h1>
+                        </div>
                         
                       }
                       {/* </Grid> */}
@@ -234,7 +233,7 @@ function Movielist() {
             <div>
               <h1 align="center" className="text-4xl p-8">Favorites</h1>
               
-              <div className='relative flex items-center'>
+                    <div className='relative flex items-center'>
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                 {
@@ -254,7 +253,7 @@ function Movielist() {
                           <img
 
                           
-                            className="example"
+                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             component="img"
                             // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="The house from the offer."
