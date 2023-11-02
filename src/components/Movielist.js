@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import theatre1 from "../img/theatre.jpg"; 
 
 
 function Movielist() {
@@ -125,7 +126,7 @@ function Movielist() {
 
   return (
 
-    <div>
+    <body className="theatre1">
       <div>
         <div >
 
@@ -183,7 +184,7 @@ function Movielist() {
             {/* </div> */}
 
 
-            {name?.length === 0 ? (<h1 align="center" className="text-4xl p-8">no movies loaded</h1>) :
+            {name?.length === 0 ? (<h1 align="center" className="text-4xl p-8">Search for a Movie!</h1>) :
 
 
 
@@ -204,7 +205,7 @@ function Movielist() {
 
                         //   >
 
-                        <div>
+                        <div className="pl-2 pr-2">
 
 
                           <img
@@ -267,12 +268,13 @@ function Movielist() {
                             // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="The house from the offer."
                             src={movs.movPoster}
+                            onClick={() => { deleteMovie(movs.movPoster, favorites) }}
 
                           />
 
                           <button
 
-                            style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 border border-white-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                            style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold py-2 px-4 border border-white-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
                             Delete</button>
 
                         </div>
@@ -288,7 +290,7 @@ function Movielist() {
 
         </div>
       </div>
-    </div>
+    </body>
     // </ThemeProvider>
 
   );
