@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as React from 'react';
-import { TERipple } from 'tw-elements-react';
+// import { TERipple } from 'tw-elements-react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
@@ -155,11 +155,11 @@ function Movielist() {
                     }}
                   />
 
-                  <TERipple>
+                  {/* <TERipple> */}
                     <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
                       Send
                     </button>
-                  </TERipple>
+                  {/* </TERipple> */}
 
 
                 </div>
@@ -171,13 +171,13 @@ function Movielist() {
             {/* </div> */}
 
 
-            {name?.length === 0 ? (<h1>no movies loaded</h1>) :
+            {name?.length === 0 ? (<h1 align="center" className="text-4xl p-8">no movies loaded</h1>) :
 
 
-              <div>
+              
 
                 <div>
-                  <h1 align="center" className="text-4xl pb-2">Movies</h1>
+                  <h1 align="center" className="text-4xl p-8">Movies</h1>
                   <div className='relative flex items-center'>
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
@@ -225,7 +225,7 @@ function Movielist() {
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
                   </div>
                 </div>
-              </div>
+             
             }
 
             {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
@@ -233,6 +233,7 @@ function Movielist() {
 
             <div>
               <h1 align="center" className="text-4xl p-8">Favorites</h1>
+              
               <div className='relative flex items-center'>
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
                     <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
