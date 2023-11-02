@@ -10,6 +10,7 @@ function Movielist() {
   const [value, setValue] = React.useState(0);
   const [star, setStar] = useState(null);
 
+  //Slider for Movies List
 
   const slideLeft = () => {
     var slider = document.getElementById('slider')
@@ -21,6 +22,19 @@ function Movielist() {
     var slider = document.getElementById('slider')
     slider.scrollLeft = slider.scrollLeft + 500;
 
+  }
+
+  //Slider for Favorites 
+
+  const slideFavoriteLeft = () => {
+    var slider = document.getElementById('sliderFav')
+    slider.scrollLeft = slider.scrollLeft - 500;
+  }
+
+  const slideFavoriteRight = () => {
+    var slider = document.getElementById('sliderFav')
+    slider.scrollLeft = slider.scrollLeft +
+     500;
   }
 
   // console.log(localStorage);
@@ -110,7 +124,7 @@ function Movielist() {
   }
 
   return (
-  
+
     <div>
       <div>
         <div >
@@ -154,10 +168,10 @@ function Movielist() {
                     }}
                   />
 
-                    <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
-                      Send
-                    </button>
-                
+                  <button type="submit" className="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
+                    Send
+                  </button>
+
 
 
                 </div>
@@ -172,78 +186,73 @@ function Movielist() {
             {name?.length === 0 ? (<h1 align="center" className="text-4xl p-8">no movies loaded</h1>) :
 
 
-              
-
-                <div>
-                  <h1 align="center" className="text-4xl p-4">Movies</h1>
-                  <div className='relative flex items-center'>
-                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
-                    <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
-                      {name ?
-
-                        (name.map((movie, index) => (
-
-                          // <div>
-                          //   <div
-                          //     sx={{ minWidth: 200, maxWidth: 220 }}
-                          //     style={{ display: "flex" }}
-
-                          //   >
-
-                          <div>
 
 
-                            <img
-                              className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                              // component="img"
-                              // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                              alt="No Movie Image"
-                              src={movie.Poster}
-                              onClick={() => { saveMovie(movie.Poster, setStar) }}
-                            />
-                            {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
+              <div>
+                <h1 align="center" className="text-4xl p-4">Movies</h1>
+                <div className='relative flex items-center'>
+                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
+                  <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+                    {name ?
 
+                      (name.map((movie, index) => (
 
-                          </div>
-                          //   </div>
-                          // </div>
+                        // <div>
+                        //   <div
+                        //     sx={{ minWidth: 200, maxWidth: 220 }}
+                        //     style={{ display: "flex" }}
 
-                        )))
-                          
-                        :
+                        //   >
+
                         <div>
+
+
+                          <img
+                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                            // component="img"
+                            // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                            alt="No Movie Image"
+                            src={movie.Poster}
+                            onClick={() => { saveMovie(movie.Poster, setStar) }}
+                          />
+                          {movie.Poster === star ? < div>Favorite </div> : (<p>No Favorite</p>)}
+
+
+                        </div>
+
+
+                      )))
+
+                      :
+                      <div>
                         <h1 align="center" className="text-4xl p-8">
                           No Movies Found
                         </h1>
-                        </div>
-                        
-                      }
-                      {/* </Grid> */}
+                      </div>
 
-                    </div>
-                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
+                    }
+                    {/* </Grid> */}
+
                   </div>
+                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
                 </div>
-             
+              </div>
+
             }
-
-            {/* <Grid xs={4}> <h1>Favorites</h1> </Grid> */}
-
-
             <div>
               <h1 align="center" className="text-4xl p-8">Favorites</h1>
-              
-                    <div className='relative flex items-center'>
-                    <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
-                    <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
-                {
 
-                  (favorites.toReversed().map((movs, i) => (
+              <div className='relative flex items-center'>
+                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteLeft}><MdChevronLeft size={40} /></div>
+                <div id='sliderFav' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
+                  {
+
+                    (favorites.toReversed().map((movs, i) => (
 
 
-                    <div key={movs.id}>
-                      {/* <Grid item xs={2}> */}
-                     
+                      <div key={movs.id}>
+                        {/* <Grid item xs={2}> */}
+
 
                         <div
                           onMouseEnter={() => showButton(i)}
@@ -252,7 +261,7 @@ function Movielist() {
                           {/* <Card> */}
                           <img
 
-                          
+
                             className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             component="img"
                             // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
@@ -261,38 +270,19 @@ function Movielist() {
 
                           />
 
-                          {/* </Card> */}
-
-                          {/* <Butt display={see === i? 'block':'none'} /> */}
-
-
-
-
                           <button
 
                             style={{ maxWidth: '130px', display: see === i ? 'block' : 'none' }} onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
                             Delete HERE</button>
 
                         </div>
-                        
-                     
-                      {/* </Grid> */}
-                    </div>
-
-
-
-                  )))
-                  // </div>
-                }
+                      </div>
+                    )))
+                  }
+                </div>
+                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} /> </div>
               </div>
-              <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
             </div>
-            </div>
-
-
-
-
-
           </div>
 
         </div>
