@@ -272,7 +272,7 @@ function Movielist() {
 
                           <button
 
-                            style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                            style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 border border-white-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
                             Delete</button>
 
                         </div>
