@@ -184,7 +184,7 @@ function Movielist() {
             {/* </div> */}
 
 
-            {name?.length === 0 ? (<h1 align="center" className="text-4xl p-8">Search for a Movie!</h1>) :
+            {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
 
 
 
@@ -192,7 +192,7 @@ function Movielist() {
               <div>
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
                 <div className='relative flex items-center'>
-                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} /></div>
+                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                     {name ?
 
@@ -208,7 +208,7 @@ function Movielist() {
                             src={movie.Poster}
                             onClick={() => { saveMovie(movie.Poster, setStar) }}
                           />
-                          {movie.Poster === star ? < div className="text-white">Favorite </div> : (<p>No Favorite</p>)}
+                          {movie.Poster === star ? < div className="text-white">Favorite </div> : (<p className="text-white">No Favorite</p>)}
 
 
                         </div>
@@ -227,7 +227,7 @@ function Movielist() {
                     {/* </Grid> */}
 
                   </div>
-                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} /> </div>
+                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} color="white"  /> </div>
                 </div>
               </div>
 
@@ -236,7 +236,7 @@ function Movielist() {
               <h1 align="center" className="text-white text-4xl p-8">Favorites</h1>
 
               <div className='relative flex items-center'>
-                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteLeft}><MdChevronLeft size={40} /></div>
+                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteLeft}><MdChevronLeft size={40} color="white" /></div>
                 <div id='sliderFav' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                   {
 
@@ -275,7 +275,7 @@ function Movielist() {
                     )))
                   }
                 </div>
-                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} /> </div>
+                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} color="white"  /> </div>
               </div>
             </div>
           </div>
