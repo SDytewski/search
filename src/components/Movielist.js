@@ -7,9 +7,12 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 function Movielist() {
   const [name, setName] = useState([]);
-  const [person, setPerson] = useState("John")
+  // const [person, setPerson] = useState("")
+  // const [count, setCount] = useState(0)
   const [value, setValue] = React.useState(0);
   const [star, setStar] = useState(null);
+
+
 
   //Slider for Movies List
 
@@ -95,24 +98,23 @@ function Movielist() {
 
   const saveMovie = (poster) => {
 
-    var r = favorites.some(i => i.movPoster.includes(poster));
+    const r = favorites.some(i => i.movPoster.includes(poster));
+    console.log("Hello");
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
+      console.log("Aland is a great teacher")
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
         }
-        alert("movie added to favorites!")
-
+        // alert("movie added to favorites!")
+        console.log(film);
         console.log(shows.movPoster);
         //  setStar(shows.movPoster);
 
         const returnValue = [...film, shows];
-
-
-
         return returnValue;
 
 
@@ -141,12 +143,18 @@ function Movielist() {
             >MOVIE LIST
 
             </h1>
-
+         
 
             <div>
 
               <div className="mt-10 p-6 md:w-96 mx-auto">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
+                {/* <div id="person" className="text-white">{person}</div>
+
+          <button className="text-white" onClick={()=>{setPerson("Tim");}}>Click</button> */}
+          {/* <div className="text-white">{count}</div>
+                
+                <button className="text-white" onClick={()=>{setCount(1+count);}}>Click</button> */}
 
                   <input
                     className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
@@ -206,9 +214,11 @@ function Movielist() {
                             // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="No Movie Image"
                             src={movie.Poster}
-                            onClick={() => { saveMovie(movie.Poster, setStar) }}
+                            onClick={() => { 
+                              console.log("something")
+                              saveMovie(movie.Poster, setStar) }}
                           />
-                          {movie.Poster === star ? < div className="text-white">Favorite </div> : (<p className="text-white">No Favorite</p>)}
+                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div className="text-white">Favorite </div> : (<p className="text-white">Not a Favorited</p>)}
 
 
                         </div>
