@@ -3,6 +3,8 @@ import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 // import theatre1 from "../img/theatre.jpg"; 
+import {AiFillHeart} from 'react-icons/ai';
+import {TbHeartOff} from 'react-icons/tb'
 
 
 function Movielist() {
@@ -41,6 +43,7 @@ function Movielist() {
      500;
   }
 
+  const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5"}
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
@@ -218,7 +221,7 @@ function Movielist() {
                               console.log("something")
                               saveMovie(movie.Poster, setStar) }}
                           />
-                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div className="text-white">Favorite </div> : (<p className="text-white">Not a Favorited</p>)}
+                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style = {style}> <AiFillHeart/> </div> : (<div align="center"  style = {style}><TbHeartOff/></div>)}
 
 
                         </div>
