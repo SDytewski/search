@@ -40,6 +40,8 @@
   color: #61dafb;
 }
 
+
+
 /* .img {
   min-width: 800px !important;
 } */
@@ -213,13 +215,18 @@ background-color: black; */
 
 
 
-/* .marquee
- {
-    -webkit-animation:spin 20s linear infinite;
-    -moz-animation:spin 20s linear infinite;
-    animation:spin 20s linear infinite;
-} */
+#banner
+{
+  animation: wordAnimation 2s linear infinite;
+}
+@keyframes wordAnimation {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0; transform: scale(0); }
+}
 
+
+ 
 
 form {
   border: none;
@@ -232,14 +239,3 @@ form {
 
 }
 
-/* #space{ */
- 
-  /* left:0;
-  top:0; */
-  /* min-height:150px;
-  max-height: 160px; */
-  /* right:0;
-  background-color:blue;
-  width: 40px; */
-
-/* } */

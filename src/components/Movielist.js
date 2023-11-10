@@ -9,10 +9,11 @@ import {TbHeartOff} from 'react-icons/tb'
 
 function Movielist() {
   const [name, setName] = useState([]);
-  // const [person, setPerson] = useState("")
+  const [person, setPerson] = useState("")
   // const [count, setCount] = useState(0)
   const [value, setValue] = React.useState(0);
   const [star, setStar] = useState(null);
+  const [banner, setBanner] = useState("");
 
 
 
@@ -42,6 +43,8 @@ function Movielist() {
     slider.scrollLeft = slider.scrollLeft +
      500;
   }
+
+  const inputEl = useRef();
 
   const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5"}
   // console.log(localStorage);
@@ -106,7 +109,7 @@ function Movielist() {
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
-      console.log("Aland is a great teacher")
+      setBanner("Movie Added")
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
@@ -202,6 +205,7 @@ function Movielist() {
 
               <div>
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
+                <div align="center" id="banner" className="text-white text-4xl p-4">{banner}</div>
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
