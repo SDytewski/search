@@ -14,6 +14,8 @@ function Movielist() {
   const [value, setValue] = React.useState(0);
   const [star, setStar] = useState(null);
   const [banner, setBanner] = useState("");
+  const [clicked, setClicked] = useState(false);
+
 
 
 
@@ -205,7 +207,7 @@ function Movielist() {
 
               <div>
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
-                <div align="center" id="banner" className="text-white text-4xl p-4">{banner}</div>
+                <div align="center" id="banner" className="text-white text-4xl p-4" class={clicked === true ? "animate" : null} onAnimationEnd={() => setClicked(false)}>{banner}</div>
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
@@ -223,7 +225,9 @@ function Movielist() {
                             src={movie.Poster}
                             onClick={() => { 
                               console.log("something")
-                              saveMovie(movie.Poster, setStar) }}
+                              saveMovie(movie.Poster, setStar)
+                              setClicked(true)
+                             }}
                           />
                           {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style = {style}> <AiFillHeart/> </div> : (<div align="center"  style = {style}><TbHeartOff/></div>)}
 
