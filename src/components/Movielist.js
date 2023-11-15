@@ -109,7 +109,8 @@ function Movielist() {
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
-      setBanner("Movie Added")
+      setBanner("Movie Added!")
+      setTimeout(() => setBanner(""), 2000);
       setFavorites((film) => {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
@@ -127,7 +128,8 @@ function Movielist() {
       });
     }
     else {
-      alert("Movie already exists on your favorites!")
+      setBanner("Movie already in your favorites")
+      setTimeout(() => setBanner(""), 2000);
     }
 
   }
@@ -205,7 +207,8 @@ function Movielist() {
 
               <div>
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
-                <div align="center" id="banner" className="text-white text-4xl p-4">{banner}</div>
+                {banner == "" ?<div align="center" id="banner" className="text-white text-4xl p-4 m-5"></div> :
+                <div align="center" id="banner" className="text-white text-4xl p-4">{banner}</div>}
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
