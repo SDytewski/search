@@ -5,7 +5,7 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 // import theatre1 from "../img/theatre.jpg"; 
 import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
-import { BsExclamationSquare } from "react-icons/bs";
+
 
 
 function Movielist() {
@@ -208,7 +208,7 @@ function Movielist() {
 
               <div>
                 
-                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a show or movie to add to your favorites</div> :
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie in your search to add to your favorites</div> :
                   <div className="items-center">
                     <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
                     {/* </div> */}
@@ -245,11 +245,11 @@ function Movielist() {
                       )))
 
                       :
-                      <div>
-                        <h1 align="center" className=" text-white text-4xl p-8">
-                          No Movies Found
-                        </h1>
-                      </div>
+                      // <div>
+                        <h4 align="center" className=" text-white text-4xl p-8">
+                          No movies found, search again
+                        </h4>
+                      // </div>
 
                     }
                     {/* </Grid> */}
