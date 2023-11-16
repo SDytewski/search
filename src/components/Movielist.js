@@ -223,7 +223,7 @@ function Movielist() {
 
                       (name.map((movie, index) => (
 
-                        <div className="pl-2 pr-2 items-center">
+                        <div className="pl-2 pr-2 items-center max-w-1">
                           
                           <img
                             className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
@@ -236,7 +236,12 @@ function Movielist() {
                               saveMovie(movie.Poster, setStar)
                             }}
                           />
-                          <div className="text-center text-white p-5">{movie.Title}</div>
+                          {/* <div className="min-w-1"> */}
+                          <div id="lost"className="text-white break-words overflow-hidden truncate m-5">{movie.Title}
+                          <div>{movie.Year}</div>
+                          </div>
+                          
+                          {/* </div> */}
                           {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
 
