@@ -237,9 +237,9 @@ function Movielist() {
                             }}
                           />
                           {/* <div className="min-w-1"> */}
-                          <div id="lost"className="text-white break-words overflow-hidden truncate m-5 hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
+                          {/* <div id="lost"className="text-white break-words overflow-hidden truncate m-5 hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
                           <div>{movie.Year}</div>
-                          </div>
+                          </div> */}
                           
                           {/* </div> */}
                           {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
