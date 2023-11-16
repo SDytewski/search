@@ -129,7 +129,7 @@ function Movielist() {
       });
     }
     else {
-      setBanner("Movie already in your favorites")
+      setBanner("Movie already exists in your favorites")
       setTimeout(() => setBanner(""), 2000);
     }
 
@@ -208,7 +208,7 @@ function Movielist() {
 
               <div>
                 
-                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie in your search to add to your favorites</div> :
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie to add to your favorites</div> :
                   <div className="items-center">
                     <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
                     {/* </div> */}
@@ -246,7 +246,7 @@ function Movielist() {
 
                       :
                       // <div>
-                        <h4 align="center" className=" text-white text-4xl p-8">
+                        <h4 align="center" className="text-rose-200 text-2xl p-8">
                           No movies found, search again
                         </h4>
                       // </div>
