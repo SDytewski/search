@@ -3,8 +3,9 @@ import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 // import theatre1 from "../img/theatre.jpg"; 
-import {AiFillHeart} from 'react-icons/ai';
-import {TbHeartOff} from 'react-icons/tb'
+import { AiFillHeart } from 'react-icons/ai';
+import { TbHeartOff } from 'react-icons/tb'
+import { BsExclamationSquare } from "react-icons/bs";
 
 
 function Movielist() {
@@ -41,12 +42,12 @@ function Movielist() {
   const slideFavoriteRight = () => {
     var slider = document.getElementById('sliderFav')
     slider.scrollLeft = slider.scrollLeft +
-     500;
+      500;
   }
 
   const inputEl = useRef();
 
-  const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5"}
+  const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5" }
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
@@ -109,7 +110,7 @@ function Movielist() {
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
-      setBanner("Movie Added!")
+      setBanner("Movie added!")
       setTimeout(() => setBanner(""), 2000);
       setFavorites((film) => {
         const shows = {
@@ -136,7 +137,7 @@ function Movielist() {
 
   return (
 
-    <body className="theatre1" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")`}}>
+    <body className="theatre1" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
       <div>
         <div >
 
@@ -151,16 +152,16 @@ function Movielist() {
             >MOVIE LIST
 
             </h1>
-         
+
 
             <div>
 
               <div className="mt-10 p-6 md:w-96 mx-auto">
                 <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                {/* <div id="person" className="text-white">{person}</div>
+                  {/* <div id="person" className="text-white">{person}</div>
 
           <button className="text-white" onClick={()=>{setPerson("Tim");}}>Click</button> */}
-          {/* <div className="text-white">{count}</div>
+                  {/* <div className="text-white">{count}</div>
                 
                 <button className="text-white" onClick={()=>{setCount(1+count);}}>Click</button> */}
 
@@ -206,9 +207,15 @@ function Movielist() {
 
 
               <div>
-                <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
-                {banner == "" ?<div align="center" id="banner" className="text-white text-4xl p-4 m-5"></div> :
-                <div align="center" id="banner" className="text-white text-4xl p-4">{banner}</div>}
+                
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a show or movie to add to your favorites</div> :
+                  <div className="items-center">
+                    <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
+                    {/* </div> */}
+                    
+                  </div>
+                  </div>}
+                  <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
@@ -224,11 +231,12 @@ function Movielist() {
                             // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="No Movie Image"
                             src={movie.Poster}
-                            onClick={() => { 
+                            onClick={() => {
                               console.log("something")
-                              saveMovie(movie.Poster, setStar) }}
+                              saveMovie(movie.Poster, setStar)
+                            }}
                           />
-                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style = {style}> <AiFillHeart/> </div> : (<div align="center"  style = {style}><TbHeartOff/></div>)}
+                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
 
                         </div>
@@ -247,7 +255,7 @@ function Movielist() {
                     {/* </Grid> */}
 
                   </div>
-                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} color="white"  /> </div>
+                  <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} color="white" /> </div>
                 </div>
               </div>
 
@@ -267,35 +275,35 @@ function Movielist() {
                         {/* <Grid item xs={2}> */}
 
                         <div className="container mx-auto w-1/2 p-1 relative">
-                        <div
-                          onMouseEnter={() => showButton(i)}
-                          onMouseLeave={hideButton}>
+                          <div
+                            onMouseEnter={() => showButton(i)}
+                            onMouseLeave={hideButton}>
 
-                          {/* <Card> */}
-                          <img
+                            {/* <Card> */}
+                            <img
 
 
-                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                            component="img"
-                            // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                            alt="The house from the offer."
-                            src={movs.movPoster}
-                            onClick={() => { deleteMovie(movs.movPoster, favorites) }}
+                              className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                              component="img"
+                              // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
+                              alt="The house from the offer."
+                              src={movs.movPoster}
+                              onClick={() => { deleteMovie(movs.movPoster, favorites) }}
 
-                          />
+                            />
 
-                          <button
+                            <button
 
-                            style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold py-2 px-4 border border-white-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                            Delete</button>
+                              style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold py-2 px-4 border border-white-700 rounded absolute top-2/4 left-2/4 rounded-lg p-4" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                              Delete</button>
 
+                          </div>
                         </div>
-                      </div>
                       </div>
                     )))
                   }
                 </div>
-                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} color="white"  /> </div>
+                <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} color="white" /> </div>
               </div>
             </div>
           </div>
@@ -303,7 +311,7 @@ function Movielist() {
         </div>
       </div>
     </body>
-  
+
   );
 }
 

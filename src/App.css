@@ -252,3 +252,16 @@ form {
     visibility: hidden;
   }
 } */
+
+#banner{
+  /* display: flex; */
+  text-align: center !important;
+  /* align-items: center !important; */
+  /* margin: auto;
+  width: 50%; */
+  border: 1px solid white;
+  
+  padding: 20px;
+ 
+  font-size: 22px;
+}
