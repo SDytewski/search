@@ -87,7 +87,7 @@ function Movielist() {
     const data = await response.json();
     //fetching my data from the API and making it dynamic with the title parameter
 
-    // console.log(data.Search);
+    console.log(data.Search);
 
     setName(data.Search);
     setSearchTerm('')
@@ -223,10 +223,10 @@ function Movielist() {
 
                       (name.map((movie, index) => (
 
-                        <div className="pl-2 pr-2">
-
+                        <div className="pl-2 pr-2 items-center">
+                          
                           <img
-                            className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                            className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             // component="img"
                             // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                             alt="No Movie Image"
@@ -236,6 +236,7 @@ function Movielist() {
                               saveMovie(movie.Poster, setStar)
                             }}
                           />
+                          <div className="text-center text-white p-5">{movie.Title}</div>
                           {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
 
