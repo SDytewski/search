@@ -237,7 +237,7 @@ function Movielist() {
                             }}
                           />
                           {/* <div className="min-w-1"> */}
-                          <div id="lost"className="text-white break-words overflow-hidden truncate m-5">{movie.Title}
+                          <div id="lost"className="text-white break-words overflow-hidden truncate m-5 hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
                           <div>{movie.Year}</div>
                           </div>
                           
