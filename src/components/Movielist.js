@@ -279,7 +279,7 @@ function Movielist() {
                         {/* <Grid item xs={2}> */}
 
                         <div className="container mx-auto w-1/2 p-1 relative">
-                        <div className="text-white">{movs.movTitle}</div>
+                          
                           <div className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             onMouseEnter={() => showButton(i)}
                             onMouseLeave={hideButton}>
@@ -296,26 +296,29 @@ function Movielist() {
                               onClick={() => { deleteMovie(movs.movPoster, favorites) }}
 
                             />
-                            
-                            <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center">
-                              <div>
-                                {/* <div id="lost">{favorites.Title}</div>
-                                
-                                  <div>{favorites.Year}</div> */}
-                                </div>
 
-                              </div>
+                            <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center">
+                              <div  style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">
+                                
+                                <div id="lost" className="text-white mb-2 p-2">{movs.movTitle}</div>
+
+
+                              
+
+
 
 
                               <button
 
-                                style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold border border-white-700 rounded absolute rounded-lg p-3" onClick={() => { deleteMovie(movs.movs.movPoster, favorites) }}>
+                            className="bg-black font-bold border border-white-700 rounded absolute rounded-lg p-2 text-white ml-5" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
                                 Delete</button>
                             </div>
-
+                            </div>
                           </div>
+
                         </div>
-                      
+                      </div>
+
                     )))
                   }
                 </div>
