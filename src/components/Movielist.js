@@ -103,10 +103,10 @@ function Movielist() {
   }
 
 
-  const saveMovie = (poster) => {
+  const saveMovie = (poster, title) => {
 
-    const r = favorites.some(i => i.movPoster.includes(poster));
-    console.log("Hello");
+    const r = favorites.some(i => i.movPoster.includes(poster, title));
+    // console.log("Hello");
 
     // (!favorites[item].movPoster === yolo) 
     if (!r) {
@@ -116,10 +116,12 @@ function Movielist() {
         const shows = {
           id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
           movPoster: poster,
+          movTitle: title
         }
         // alert("movie added to favorites!")
-        console.log(film);
-        console.log(shows.movPoster);
+        // console.log(shows.movTitle);
+        // console.log(shows.movPoster);
+        // console.log(shows);
         //  setStar(shows.movPoster);
 
         const returnValue = [...film, shows];
@@ -233,9 +235,10 @@ function Movielist() {
                             src={movie.Poster}
                             onClick={() => {
                               console.log("something")
-                              saveMovie(movie.Poster, setStar)
+                              saveMovie(movie.Poster, movie.Title, setStar)
                             }}
                           />
+                          <div className="text-white">{movie.Title}</div>
 
                           {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
@@ -276,6 +279,7 @@ function Movielist() {
                         {/* <Grid item xs={2}> */}
 
                         <div className="container mx-auto w-1/2 p-1 relative">
+                        <div className="text-white">{movs.movTitle}</div>
                           <div className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             onMouseEnter={() => showButton(i)}
                             onMouseLeave={hideButton}>
@@ -292,10 +296,12 @@ function Movielist() {
                               onClick={() => { deleteMovie(movs.movPoster, favorites) }}
 
                             />
+                            
                             <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center">
                               <div>
-                                <div id="lost" className="cursor">{favorites.Title}
-                                  <div>{favorites.Year}</div>
+                                {/* <div id="lost">{favorites.Title}</div>
+                                
+                                  <div>{favorites.Year}</div> */}
                                 </div>
 
                               </div>
@@ -303,13 +309,13 @@ function Movielist() {
 
                               <button
 
-                                style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold border border-white-700 rounded absolute rounded-lg p-3" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                                style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 bg-black text-white font-bold border border-white-700 rounded absolute rounded-lg p-3" onClick={() => { deleteMovie(movs.movs.movPoster, favorites) }}>
                                 Delete</button>
                             </div>
 
                           </div>
                         </div>
-                      </div>
+                      
                     )))
                   }
                 </div>
