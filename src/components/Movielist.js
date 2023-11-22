@@ -205,9 +205,6 @@ function Movielist() {
 
             {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
 
-
-
-
               <div>
 
                 {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie to add to your favorites</div> :
@@ -217,6 +214,11 @@ function Movielist() {
 
                     </div>
                   </div>}
+
+
+
+                {/* Search Results                   */}
+
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
@@ -224,28 +226,41 @@ function Movielist() {
                     {name ?
 
                       (name.map((movie, index) => (
+                        <div>
+                          <div className="container mx-auto w-1/2 p-1 relative">
+                            <div className="min-w-[160px] min-h-[260px] max-h-[360px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">
 
-                        <div className="pl-2 pr-2 items-center">
+                              {/* <div className="pl-2 pr-2 items-center"> */}
 
-                          <img
-                            className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                            // component="img"
-                            // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                            alt="No Movie Image"
-                            src={movie.Poster}
-                            onClick={() => {
-                              console.log("something")
-                              saveMovie(movie.Poster, movie.Title, setStar)
-                            }}
-                          />
-                          <div className="text-white">{movie.Title}</div>
+                              <img
+                                className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                                // component="img"
+                                // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
+                                alt="No Movie Image"
+                                src={movie.Poster}
+                                onClick={() => {
+                                  console.log("something")
+                                  saveMovie(movie.Poster, movie.Title, setStar)
+                                }}
+                              />
+                              {/* <div className="text-white">{movie.Title}</div> */}
+                              <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
+                              onClick={() => {
+                                console.log("something")
+                                saveMovie(movie.Poster, movie.Title, setStar)}}>
+                              
+                                <div style={{ maxWidth: '230px' }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
+                                
+                              </div>
+                              </div>
 
-                          {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
+                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
+
+                            </div>
+                          </div>
 
                         </div>
-
-
                       )))
 
                       :
@@ -264,6 +279,10 @@ function Movielist() {
               </div>
 
             }
+
+
+
+            {/* Favorites Results            */}
             <div>
               <h1 align="center" className="text-white text-4xl p-8">Favorites</h1>
 
@@ -279,7 +298,7 @@ function Movielist() {
                         {/* <Grid item xs={2}> */}
 
                         <div className="container mx-auto w-1/2 p-1 relative">
-                          
+
                           <div className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                             onMouseEnter={() => showButton(i)}
                             onMouseLeave={hideButton}>
@@ -298,21 +317,16 @@ function Movielist() {
                             />
 
                             <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center">
-                              <div  style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">
-                                
+                              <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">
+
                                 <div id="lost" className="text-white mb-2 p-2">{movs.movTitle}</div>
 
 
-                              
+                                <button
 
-
-
-
-                              <button
-
-                            className="bg-black font-bold border border-white-700 rounded absolute rounded-lg p-2 text-white ml-5" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                                Delete</button>
-                            </div>
+                                  className="bg-black font-bold border border-white-700 rounded absolute rounded-lg p-2 text-white ml-5" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
+                                  Delete</button>
+                              </div>
                             </div>
                           </div>
 

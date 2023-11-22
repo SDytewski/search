@@ -291,3 +291,28 @@ form {
   
 }
 
+#coast {
+  max-width: 150px;
+  border: 1px solid black;
+  word-wrap: break-word;
+  background-color: #000000;
+  border: none;
+
+  /* padding: 16px 32px; */
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.6s;
+  display: block;
+
+  
+}
+
+#coast:hover{
+  opacity: 1;
+  overflow: visible; 
+  white-space: normal;
+  height:auto;  /* just added this line */
+  
+}
