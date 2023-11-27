@@ -319,16 +319,17 @@ function Movielist() {
 
                             />
 
-                            <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center">
-                              <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">
+                            <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
+                              <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="">
 
-                                <div id="lost" className="text-white mb-2 p-2">{movs.movTitle}</div>
+                                <button id="lost" className="text-white mb-2 p-2"  onClick={() => { deleteMovie(movs.movPoster, favorites) }}><div className="text-rose-500">DELETE</div> {movs.movTitle}</button>
 
 
-                                <button
+                                {/* <button
 
-                                  className="bg-black font-bold border border-white-700 rounded absolute rounded-lg p-2 text-white ml-5" onClick={() => { deleteMovie(movs.movPoster, favorites) }}>
-                                  Delete</button>
+                                  className="absolute bottom-5 bg-black font-bold border border-white-700 rounded absolute rounded-lg p-5 text-white"/>
+                                  Delete</button> */}
+                                  
                               </div>
                             </div>
                           </div>
