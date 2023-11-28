@@ -52,6 +52,13 @@ function Movielist() {
 
   // setting an array empty to use for my movies array
   const [see, setSee] = useState(-1);
+  const [view, setView] = useState(-1);
+
+
+  const showTitle = (index) => {
+
+    setView(index);
+  };
 
 
   const showButton = (i) => {
@@ -79,6 +86,7 @@ function Movielist() {
   const hideButton = () => {
     // e.preventDefault();
     setSee(-1);
+    setView(-1)
   };
 
   const names = async (title) => {
@@ -225,11 +233,11 @@ function Movielist() {
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                     {name ?
 
-                      (name.map((movie, i) => (
+                      (name.map((movie, index) => (
                         <div>
                           <div className="container mx-auto w-1/2 p-1 relative">
                             <div className="min-w-[160px] min-h-[260px] max-h-[360px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                             onMouseEnter={() => showButton(i)}
+                             onMouseEnter={() => showTitle(index)}
                              onMouseLeave={hideButton}
                             >
 
@@ -252,7 +260,7 @@ function Movielist() {
                                 console.log("something")
                                 saveMovie(movie.Poster, movie.Title, setStar)}}>
                               
-                                <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none'  }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
+                                <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none'  }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
                                 
                               </div>
                               </div>
