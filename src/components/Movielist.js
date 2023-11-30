@@ -151,7 +151,7 @@ function Movielist() {
       <div>
         <div >
 
-          <div className="p-4">
+          <div className="p-9">
 
             <h1
               align="center"
@@ -290,8 +290,6 @@ function Movielist() {
               </div>
 
             }
-
-
 
             {/* Favorites Results            */}
             <div>
