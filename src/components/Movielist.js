@@ -34,16 +34,16 @@ function Movielist() {
 
   //Slider for Favorites 
 
-  const slideFavoriteLeft = () => {
-    var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft - 500;
-  }
+  // const slideFavoriteLeft = () => {
+  //   var slider = document.getElementById('sliderFav')
+  //   slider.scrollLeft = slider.scrollLeft - 500;
+  // }
 
-  const slideFavoriteRight = () => {
-    var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft +
-      500;
-  }
+  // const slideFavoriteRight = () => {
+  //   var slider = document.getElementById('sliderFav')
+  //   slider.scrollLeft = slider.scrollLeft +
+  //     500;
+  // }
 
   const inputEl = useRef();
 
