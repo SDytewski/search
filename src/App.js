@@ -10,15 +10,15 @@ function App() {
     slider.scrollLeft = slider.scrollLeft - 500;
   }
 
-  const slideFavoriteRight = () => {
-    var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft +
-      500;
-  }
+  // const slideFavoriteRight = () => {
+  //   var slider = document.getElementById('sliderFav')
+  //   slider.scrollLeft = slider.scrollLeft +
+  //     500;
+  // }
   return (
     <div className="App">
-      <Movielist sliderFavoriteLeft={slideFavoriteLeft} />
-      <Favorites sliderFavoriteLeft={slideFavoriteLeft} />
+      <Movielist slideFavoriteLeft={slideFavoriteLeft} />
+      {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
       {/* <Movielist /> */}
     </div>
   );

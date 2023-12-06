@@ -8,7 +8,7 @@ import { TbHeartOff } from 'react-icons/tb'
 
 
 
-function Movielist() {
+function Movielist({slideFavoriteLeft}) {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("")
   // const [count, setCount] = useState(0)
