@@ -5,7 +5,7 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
 
-function Favorites({slideFavoriteLeft}) {
+function Favorites({slideFavoriteLeft, slideFavoriteRight, favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
 
     return (
         <div>
