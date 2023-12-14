@@ -10,24 +10,20 @@ function App() {
 
 
 
-  const slideFavoriteLeft = () => {
-    var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft - 500;
-  }
-
-  const slideFavoriteRight = () => {
-    var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft +
-      500;
-  }
 
   const [favorites, setFavorites] = useState([]);
   const [banner, setBanner] = useState("");
   const [star, setStar] = useState(null);
+  const [see, setSee] = useState(-1);
 
   useEffect(() => {
     // console.log(favorites);
   }, [favorites])
+
+  const showButton = (i) => {
+
+    setSee(i);
+  };
 
   const saveMovie = (poster, title) => {
 
@@ -65,8 +61,8 @@ function App() {
   
   return (
     <div className="App" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
-      <Movielist star={star} setStar={setStar} saveMovie={saveMovie} banner={setBanner} setBanner={setBanner} slideFavoriteLeft={slideFavoriteLeft} slideFavoriteRight={slideFavoriteRight}  favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
-      <Favorites slideFavoriteLeft={slideFavoriteLeft} slideFavoriteRight={slideFavoriteRight} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
+      <Movielist  see={see} setSee={setSee} star={star} setStar={setStar} saveMovie={saveMovie} banner={setBanner} setBanner={setBanner} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
+      <Favorites showButton={showButton} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
       {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
       {/* <Movielist /> */}
     </div>

@@ -5,7 +5,19 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 // import { AiFillHeart } from 'react-icons/ai';
 // import { TbHeartOff } from 'react-icons/tb'
 
-function Favorites({slideFavoriteLeft, slideFavoriteRight, favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
+
+const slideFavoriteLeft = () => {
+    var slider = document.getElementById('sliderFav')
+    slider.scrollLeft = slider.scrollLeft - 500;
+  }
+
+  const slideFavoriteRight = () => {
+    var slider = document.getElementById('sliderFav')
+    slider.scrollLeft = slider.scrollLeft +
+      500;
+  }
+
+function Favorites({favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
 
     return (
         <div>

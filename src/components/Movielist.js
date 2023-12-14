@@ -8,7 +8,7 @@ import { TbHeartOff } from 'react-icons/tb'
 
 
 
-function Movielist({saveMovie, star, setStar, banner, setBanner, favorites, setFavorites}) {
+function Movielist({see, setSee, saveMovie, star, setStar, banner, setBanner, favorites, setFavorites}) {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("")
   // const [count, setCount] = useState(0)
@@ -51,7 +51,7 @@ function Movielist({saveMovie, star, setStar, banner, setBanner, favorites, setF
   // console.log(localStorage);
 
   // setting an array empty to use for my movies array
-  const [see, setSee] = useState(-1);
+  
   const [view, setView] = useState(-1);
 
 
