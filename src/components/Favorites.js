@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { AiFillHeart } from 'react-icons/ai';
-import { TbHeartOff } from 'react-icons/tb'
+// import { AiFillHeart } from 'react-icons/ai';
+// import { TbHeartOff } from 'react-icons/tb'
 
 function Favorites({slideFavoriteLeft, slideFavoriteRight, favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
 

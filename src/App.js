@@ -24,7 +24,7 @@ function App() {
   }, [favorites])
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
       <Movielist slideFavoriteLeft={slideFavoriteLeft} slideFavoriteRight={slideFavoriteRight} />
       <Favorites slideFavoriteLeft={slideFavoriteLeft} slideFavoriteRight={slideFavoriteRight} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
       {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
