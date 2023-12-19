@@ -2,9 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-// import { AiFillHeart } from 'react-icons/ai';
-// import { TbHeartOff } from 'react-icons/tb'
-
 
 const slideFavoriteLeft = () => {
     var slider = document.getElementById('sliderFav')
@@ -17,7 +14,7 @@ const slideFavoriteLeft = () => {
       500;
   }
 
-function Favorites({favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
+function Favorites({ favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
 
     return (
         <div>
@@ -59,11 +56,7 @@ function Favorites({favorites, setFavorites, showButton, hideButton, deleteMovie
                                                 <button id="lost" className="text-white mb-2 p-2" onClick={() => { deleteMovie(movs.movPoster, favorites) }}><div className="text-rose-500">DELETE</div> {movs.movTitle}</button>
 
 
-                                                {/* <button
-
-                        className="absolute bottom-5 bg-black font-bold border border-white-700 rounded absolute rounded-lg p-5 text-white"/>
-                        Delete</button> */}
-
+                            
                                             </div>
                                         </div>
                                     </div>

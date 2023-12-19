@@ -25,6 +25,26 @@ function App() {
     setSee(i);
   };
 
+  const hideButton = () => {
+    // e.preventDefault();
+    setSee(-1);
+    setView(-1)
+  };
+
+  const showTitle = (index) => {
+
+    setView(index);
+  };
+  const [view, setView] = useState(-1);
+
+  const deleteMovie = (movPost, favorites) => {
+    const newFavorites = favorites.filter((favs) => {
+      return favs.movPoster != movPost
+    });
+    setFavorites(newFavorites)
+
+  }
+
   const saveMovie = (poster, title) => {
 
     const r = favorites.some(i => i.movPoster.includes(poster, title));
@@ -61,8 +81,8 @@ function App() {
   
   return (
     <div className="App" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
-      <Movielist  see={see} setSee={setSee} star={star} setStar={setStar} saveMovie={saveMovie} banner={banner} setBanner={setBanner} setBanner={setBanner} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
-      <Favorites showButton={showButton} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
+      <Movielist showTitle={showTitle} view={view} setView={setView} hideButton={hideButton} see={see} setSee={setSee} star={star} setStar={setStar} saveMovie={saveMovie} banner={banner} setBanner={setBanner} favorites={favorites} setFavorites={setFavorites}/>
+      <Favorites showTitle={showTitle} deleteMovie={deleteMovie} showButton={showButton} hideButton={hideButton} favorites={favorites} setFavorites={setFavorites} see={see} useState ={useState}/>
       {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
       {/* <Movielist /> */}
     </div>
