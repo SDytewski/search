@@ -61,10 +61,7 @@ function Movielist({see, setSee, saveMovie, star, setStar, banner, setBanner, fa
   };
 
 
-  const showButton = (i) => {
 
-    setSee(i);
-  };
   const [searchTerm, setSearchTerm] = useState('');
   // const [favorites, setFavorites] = useState([]);
   const {

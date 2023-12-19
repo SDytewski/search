@@ -61,7 +61,7 @@ function App() {
   
   return (
     <div className="App" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
-      <Movielist  see={see} setSee={setSee} star={star} setStar={setStar} saveMovie={saveMovie} banner={setBanner} setBanner={setBanner} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
+      <Movielist  see={see} setSee={setSee} star={star} setStar={setStar} saveMovie={saveMovie} banner={banner} setBanner={setBanner} setBanner={setBanner} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
       <Favorites showButton={showButton} favorites={favorites} setFavorites={setFavorites} useState ={useState}/>
       {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
       {/* <Movielist /> */}
