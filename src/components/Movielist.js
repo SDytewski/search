@@ -7,7 +7,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
 
 
-function Movielist({ view, showTitle, hideButton, see, setSee, saveMovie, star, setStar, banner, setBanner, favorites, setFavorites}) {
+function Movielist({ view, showTitle, hideButton, saveMovie, setStar, banner, favorites}) {
   const [name, setName] = useState([]);
   const [person, setPerson] = useState("")
   // const [count, setCount] = useState(0)
