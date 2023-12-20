@@ -14,7 +14,7 @@ const slideFavoriteLeft = () => {
       500;
   }
 
-function Favorites({ favorites, setFavorites, showButton, hideButton, deleteMovie, see}) {
+function Favorites({ favorites, showButton, hideButton, deleteMovie, see}) {
 
     return (
         <div>

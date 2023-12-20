@@ -8,34 +8,27 @@ import { useState, useEffect, useRef } from 'react';
 
 function App() {
 
-
-
-
   const [favorites, setFavorites] = useState([]);
   const [banner, setBanner] = useState("");
-  const [star, setStar] = useState(null);
   const [see, setSee] = useState(-1);
+  const [view, setView] = useState(-1);
 
   useEffect(() => {
     // console.log(favorites);
   }, [favorites])
 
   const showButton = (i) => {
-
     setSee(i);
   };
 
   const hideButton = () => {
-    // e.preventDefault();
     setSee(-1);
     setView(-1)
   };
 
   const showTitle = (index) => {
-
     setView(index);
   };
-  const [view, setView] = useState(-1);
 
   const deleteMovie = (movPost, favorites) => {
     const newFavorites = favorites.filter((favs) => {
@@ -46,11 +39,7 @@ function App() {
   }
 
   const saveMovie = (poster, title) => {
-
     const r = favorites.some(i => i.movPoster.includes(poster, title));
-    // console.log("Hello");
-
-    // (!favorites[item].movPoster === yolo) 
     if (!r) {
       setBanner("Movie added!")
       setTimeout(() => setBanner(""), 2000);
@@ -60,32 +49,20 @@ function App() {
           movPoster: poster,
           movTitle: title
         }
-        // alert("movie added to favorites!")
-        // console.log(shows.movTitle);
-        // console.log(shows.movPoster);
-        // console.log(shows);
-        //  setStar(shows.movPoster);
-
         const returnValue = [...film, shows];
         return returnValue;
-
-
       });
     }
     else {
       setBanner("Movie already exists in your favorites")
       setTimeout(() => setBanner(""), 2000);
     }
-
   }
   
-
   return (
     <div className="App" style={{ backgroundSize: "cover", backgroundImage: `url("img/theatre.jpg")` }}>
-      <Movielist showTitle={showTitle} view={view} hideButton={hideButton}  setStar={setStar} saveMovie={saveMovie} banner={banner} favorites={favorites} />
-      <Favorites showTitle={showTitle} deleteMovie={deleteMovie} showButton={showButton} hideButton={hideButton} favorites={favorites} setFavorites={setFavorites} see={see} />
-      {/* <Favorites slideFavoriteLeft={slideFavoriteLeft} /> */}
-      {/* <Movielist /> */}
+      <Movielist showTitle={showTitle} view={view} hideButton={hideButton} saveMovie={saveMovie} banner={banner} favorites={favorites} />
+      <Favorites favorites={favorites} deleteMovie={deleteMovie} showButton={showButton} hideButton={hideButton} see={see} />
     </div>
   );
   

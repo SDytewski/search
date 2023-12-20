@@ -7,11 +7,11 @@ import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
 
 
-function Movielist({ view, showTitle, hideButton, saveMovie, setStar, banner, favorites}) {
+function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites}) {
   const [name, setName] = useState([]);
-  const [person, setPerson] = useState("")
+  const [star, setStar] = useState(null);
   // const [count, setCount] = useState(0)
-  const [value, setValue] = React.useState(0);
+
   // const [star, setStar] = useState(null);
   
   //Slider for Movies List
