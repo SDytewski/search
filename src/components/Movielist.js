@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-// import theatre1 from "../img/theatre.jpg"; 
 import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
 
@@ -10,9 +9,6 @@ import { TbHeartOff } from 'react-icons/tb'
 function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites}) {
   const [name, setName] = useState([]);
   const [star, setStar] = useState(null);
-  // const [count, setCount] = useState(0)
-
-  // const [star, setStar] = useState(null);
   
   //Slider for Movies List
 
@@ -31,16 +27,6 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
   const inputEl = useRef();
 
   const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5" }
-  // console.log(localStorage);
-
-  // setting an array empty to use for my movies array
-  
-  // const [view, setView] = useState(-1);
-
-
-
-
-
 
   const [searchTerm, setSearchTerm] = useState('');
   // const [favorites, setFavorites] = useState([]);
@@ -58,9 +44,6 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
   useEffect(() => {
     // console.log(favorites);
   }, [favorites])
-
-
-
 
   const names = async (title) => {
 
@@ -82,71 +65,44 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
     <body className="theatre1">
       <div>
         <div >
-
           <div className="p-9">
-
             <h1
               align="center"
-
               id="sign"
               className="text-7xl p-8"
-
-            >MOVIE LIST
-
+            >
+              MOVIE LIST
             </h1>
-
-
             <div>
-
               <div className="mt-10 p-6 md:w-96 mx-auto">
-                <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                  {/* <div id="person" className="text-white">{person}</div>
-
-          <button className="text-white" onClick={()=>{setPerson("Tim");}}>Click</button> */}
-                  {/* <div className="text-white">{count}</div>
-                
-                <button className="text-white" onClick={()=>{setCount(1+count);}}>Click</button> */}
-
+                <div className="relative mb-4 flex w-full flex-wrap items-stretch">     
                   <input
                     className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
                     type="search"
                     name="movie"
                     value={searchTerm}
-
                     placeholder="Search for a Movie"
                     {...register("email", {
                       required: "Please enter at least one character",
                       minLength: 1
-
                     })}
                     error={!!errors?.email}
-
                     helperText={errors?.email ? errors.email.message : null}
                     sx={{ ml: 1, mt: 1, p: 2, }}
                     onChange={(e) => {
                       setSearchTerm(e.target.value);
                     }}
                   />
-
                   <button type="submit" className=" text-white relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
                     Send
                   </button>
-
-
-
                 </div>
               </div>
-
             </div>
-
             {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             {/* </div> */}
-
-
             {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
-
               <div>
-
                 {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie to add to your favorites</div> :
                   <div className="items-center">
                     <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
@@ -154,17 +110,12 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
 
                     </div>
                   </div>}
-
-
-
                 {/* Search Results                   */}
-
                 <h1 align="center" className="text-white text-4xl p-4">Movies</h1>
                 <div className='relative flex items-center'>
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft}><MdChevronLeft size={40} color="white" /></div>
                   <div id='slider' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                     {name ?
-
                       (name.map((movie, index) => (
                         <div>
                           <div className="container mx-auto w-1/2 p-1 relative">
@@ -172,9 +123,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                              onMouseEnter={() => showTitle(index)}
                              onMouseLeave={hideButton}
                             >
-
                               {/* <div className="pl-2 pr-2 items-center"> */}
-
                               <img
                                 className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                                 // component="img"
@@ -211,8 +160,6 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                       <h4 align="center" className="text-rose-200 text-2xl p-8">
                         No movies found, search again
                       </h4>
-                      // </div>
-
                     }
                     {/* </Grid> */}
 
@@ -220,15 +167,11 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                   <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight}> <MdChevronRight size={40} color="white" /> </div>
                 </div>
               </div>
-
             }
-
           </div>
-
         </div>
       </div>
     </body>
-
   );
 }
 
