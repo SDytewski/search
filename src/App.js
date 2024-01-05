@@ -17,20 +17,24 @@ function App() {
 
   const moviescollectionRef = collection(db, "movies")
 
+
+  const getMovList = async () => {
+    try {
+      const data = await getDocs(moviescollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }));
+      setMovList(filteredData);
+    }
+    catch (err) {
+      console.error(err);
+    }
+  };
+
+
   useEffect(() => {
-    const getMovList = async () => {
-      try {
-        const data = await getDocs(moviescollectionRef);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id
-        }));
-        console.log(filteredData);
-      }
-      catch (err) {
-        console.error(err);
-      }
-    };
+
     getMovList();
     // console.log(favorites);
   }, []);
@@ -54,7 +58,7 @@ function App() {
       return favs.movPoster != movPost
     });
 
-    // getMovieList();
+    
     setFavorites(newFavorites)
 
   }
@@ -78,12 +82,13 @@ function App() {
             poster: poster,
             title:  title
           });
+          getMovList();
         } catch (err) {
           console.error(err);
         }
          
       }
-        
+        console.log(shows);
           // console.log(shows);
           const returnValue = [...film, shows]; submitMovie();
 
