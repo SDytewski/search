@@ -4,7 +4,7 @@ import Movielist from './components/Movielist.js'
 import Favorites from './components/Favorites.js'
 import { useState, useEffect, useRef } from 'react';
 import { db } from './config/firebase';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, addDoc } from 'firebase/firestore';
 
 
 
@@ -22,19 +22,18 @@ function App() {
       try {
         const data = await getDocs(moviescollectionRef);
         const filteredData = data.docs.map((doc) => ({
-          ...doc.data(), 
-          id:doc.id
+          ...doc.data(),
+          id: doc.id
         }));
-        console.log(data);
+        console.log(filteredData);
       }
-     catch (err) {
-      console.error(err);
-    }
-  };
-  getMovList();
+      catch (err) {
+        console.error(err);
+      }
+    };
+    getMovList();
     // console.log(favorites);
   }, []);
-
 
 
   const showButton = (i) => {
@@ -54,11 +53,15 @@ function App() {
     const newFavorites = favorites.filter((favs) => {
       return favs.movPoster != movPost
     });
+
+    // getMovieList();
     setFavorites(newFavorites)
 
   }
 
-  const saveMovie = (poster, title) => {
+  const saveMovie = async (poster, title) => {
+
+   
     const r = favorites.some(i => i.movPoster.includes(poster, title));
     if (!r) {
       setBanner("Movie added!")
@@ -69,11 +72,23 @@ function App() {
           movPoster: poster,
           movTitle: title
         }
-        // console.log(shows);
-        const returnValue = [...film, shows];
+        const submitMovie = async () => {
+        try {
+          await addDoc(moviescollectionRef, {
+            poster: poster,
+            title:  title
+          });
+        } catch (err) {
+          console.error(err);
+        }
+         
+      }
+        
+          // console.log(shows);
+          const returnValue = [...film, shows]; submitMovie();
 
-        return returnValue;
-      });
+          return returnValue ;
+        });
     }
     else {
       setBanner("Movie already exists in your favorites")
