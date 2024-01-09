@@ -8,7 +8,7 @@ import { TbHeartOff } from 'react-icons/tb'
 
 function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites}) {
   const [name, setName] = useState([]);
-  const [star, setStar] = useState(null);
+  // const [star, setStar] = useState(null);
   
   //Slider for Movies List
 
@@ -132,21 +132,21 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                                 src={movie.Poster}
                                 onClick={() => {
                                   console.log("something")
-                                  saveMovie(movie.Poster, movie.Title, setStar)
+                                  saveMovie(movie.Poster, movie.Title)
                                 }}
                               />
                               {/* <div className="text-white">{movie.Title}</div> */}
                               <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
                               onClick={() => {
                                 console.log("something")
-                                saveMovie(movie.Poster, movie.Title, setStar)}}>
+                                saveMovie(movie.Poster, movie.Title)}}>
                               
                                 <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none'  }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
                                 
                               </div>
                               </div>
 
-                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
+                              {/* {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)} */}
 
 
                             </div>

@@ -18,14 +18,16 @@ function App() {
   const moviescollectionRef = collection(db, "movies")
 
 
-  const getMovList = async () => {
+
+  const shows = async () => {
     try {
       const data = await getDocs(moviescollectionRef);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id
       }));
-      setMovList(filteredData);
+      setFavorites(filteredData)
+      console.log(filteredData);
     }
     catch (err) {
       console.error(err);
@@ -34,8 +36,8 @@ function App() {
 
 
   useEffect(() => {
-
-    getMovList();
+    console.log(shows.filteredData);
+    shows();
     // console.log(favorites);
   }, []);
 
@@ -58,7 +60,7 @@ function App() {
       return favs.movPoster != movPost
     });
 
-    
+    // getMovieList();
     setFavorites(newFavorites)
 
   }
@@ -71,26 +73,27 @@ function App() {
       setBanner("Movie added!")
       setTimeout(() => setBanner(""), 2000);
       setFavorites((film) => {
-        const shows = {
-          id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
-          movPoster: poster,
-          movTitle: title
-        }
+        // const shows = {
+        //   id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
+        //   movPoster: poster,
+        //   movTitle: title
+        // }
         const submitMovie = async () => {
         try {
           await addDoc(moviescollectionRef, {
-            poster: poster,
-            title:  title
+            // id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
+            movPoster: poster,
+            movTitle:  title
           });
-          getMovList();
+          shows();
         } catch (err) {
           console.error(err);
         }
          
       }
-        console.log(shows);
+        console.log(shows)
           // console.log(shows);
-          const returnValue = [...film, shows]; submitMovie();
+          const returnValue = [...film, submitMovie]; submitMovie();
 
           return returnValue ;
         });
