@@ -4,7 +4,7 @@ import Movielist from './components/Movielist.js'
 import Favorites from './components/Favorites.js'
 import { useState, useEffect, useRef } from 'react';
 import { db } from './config/firebase';
-import { getDocs, collection, addDoc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 
 
 
@@ -55,12 +55,14 @@ function App() {
     setView(index);
   };
 
-  const deleteMovie = (movPost, favorites) => {
+  const deleteMovie = async (id, favorites) => {
+    const movieDoc = doc(db, "movies", id)
     const newFavorites = favorites.filter((favs) => {
-      return favs.movPoster != movPost
+      return favs.id != id
     });
 
     // getMovieList();
+    await deleteDoc(movieDoc)
     setFavorites(newFavorites)
 
   }
