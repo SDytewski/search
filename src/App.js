@@ -4,7 +4,7 @@ import Movielist from './components/Movielist.js'
 import Favorites from './components/Favorites.js'
 import { useState, useEffect, useRef } from 'react';
 import { db } from './config/firebase';
-import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getDocs, query, serverTimestamp, collection, orderBy, addDoc, deleteDoc, doc } from 'firebase/firestore';
 
 
 
@@ -14,18 +14,50 @@ function App() {
   const [banner, setBanner] = useState("");
   const [see, setSee] = useState(-1);
   const [view, setView] = useState(-1);
+  
+  
+ 
 
-  const moviescollectionRef = collection(db, "movies")
+  const moviescollectionRef = collection(db, "movies");
+  
+  
+ 
 
 
+  // moviescollectionRef.orderBy("movTitle")
+  
+//   const fetchData = async () => {
+//     let list = [];
+//     const querySnapshot = await getDocs(
+//       query(collection(database, 'cases'), orderBy("timestamp"))
+//     );
+//     querySnapshot.forEach((doc) => {
+//         list.push({ id: doc.id, ...doc.data() });
+//     });
+//     setDataCases(list);
+// };
+
+
+
+  // query(collection(database, 'cases'), orderBy("timestamp"))
 
   const shows = async () => {
     try {
-      const data = await getDocs(moviescollectionRef);
+      // const hey = await moviescollectionRef.orderBy('title').get();
+     
+  // const querySnapshot = await getDocs(q);
+      const q = query(moviescollectionRef, orderBy("timestamp", "desc"))
+      const data = await getDocs(q);
+      
+      
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
-        id: doc.id
+        id: doc.id,
+        
       }));
+
+
+      // const q= query(collection(db, "movies"), orderBy('timestamp'));
       setFavorites(filteredData)
       console.log(filteredData);
     }
@@ -36,7 +68,9 @@ function App() {
 
 
   useEffect(() => {
-    console.log(shows.filteredData);
+    console.log(shows);
+    // query(moviescollectionRef(db, 'movies'), orderBy("timestamp"))
+    // query(moviescollectionRef, orderBy("movies"));
     shows();
     // console.log(favorites);
   }, []);
@@ -64,7 +98,6 @@ function App() {
     // getMovieList();
     await deleteDoc(movieDoc)
     setFavorites(newFavorites)
-
   }
 
   const saveMovie = async (poster, title) => {
@@ -85,7 +118,8 @@ function App() {
           await addDoc(moviescollectionRef, {
             // id: film.length === 0 ? 1 : film[film.length - 1].id + 1,
             movPoster: poster,
-            movTitle:  title
+            movTitle:  title,
+            timestamp: serverTimestamp()
           });
           shows();
         } catch (err) {

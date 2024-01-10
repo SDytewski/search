@@ -25,7 +25,7 @@ function Favorites({favorites, showButton, hideButton, deleteMovie, see}) {
                 <div id='sliderFav' className="relative flex items-center w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide">
                     {
 
-                        (favorites.toReversed().map((movs, i) => (
+                        (favorites.map((movs, i) => (
 
 
                             <div key={movs.id}>
