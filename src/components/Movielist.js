@@ -4,12 +4,13 @@ import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { AiFillHeart } from 'react-icons/ai';
 import { TbHeartOff } from 'react-icons/tb'
+// import { FaSearch } from "react-icons/fa";
 
 
-function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites}) {
+function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }) {
   const [name, setName] = useState([]);
   const [star, setStar] = useState(null);
-  
+
   //Slider for Movies List
 
   const slideLeft = () => {
@@ -37,12 +38,12 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
     reset
   } = useForm();
 
-  const onSubmit = (event) => setSearchTerm(names);
+  const onSubmit = () => setSearchTerm(names);
 
   // setting a string to use for my search term
 
   // useEffect(() => {
-    
+
   // }, [favorites])
 
   // console.log(favorites);
@@ -57,9 +58,16 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
 
     setName(data.Search);
     setSearchTerm('');
-    }
+  }
 
+  const handleOnSubmit = (event) => {
+    // write your function here
+    event.preventDefault()
+  }
 
+  function handleReset(e) {
+    e.preventDefault();
+  }
 
   return (
 
@@ -75,28 +83,34 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
               MOVIE LIST
             </h1>
             <div>
-              <div className="mt-10 p-6 md:w-96 mx-auto">
-                <div className="relative mb-4 flex w-full flex-wrap items-stretch">     
-                  <input
-                    className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
-                    type="search"
-                    name="movie"
-                    value={searchTerm}
-                    placeholder="Search for a Movie"
-                    {...register("email", {
-                      required: "Please enter at least one character",
-                      minLength: 1
-                    })}
-                    error={!!errors?.email}
-                    helperText={errors?.email ? errors.email.message : null}
-                    sx={{ ml: 1, mt: 1, p: 2, }}
-                    onChange={(e) => {
-                      setSearchTerm(e.target.value);
-                    }}
-                  />
-                  <button type="submit" className=" text-white relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleSubmit(onSubmit) }}>
-                    Send
-                  </button>
+              <div className="mt-10 p-16 md:w-96 mx-auto">
+                <div className="relative mb-4 flex w-full flex-wrap items-stretch">
+                  <form onSubmit={handleSubmit(onSubmit)} className="input">
+                    <div class="flex justify-between">
+                      <input
+                        // className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
+                        className="bg-slate-190 hover:bg-red-200 h-8 w-full p-3"
+                        type="search"
+                        name="movie"
+                        value={searchTerm}
+                        placeholder="Search for a Movie"
+                        {...register("email", {
+                          required: "Please enter at least one character",
+                          minLength: 1
+                        })}
+                        error={!!errors?.email}
+                        helperText={errors?.email ? errors.email.message : null}
+                        sx={{ ml: 1, mt: 1, p: 2, }}
+                        onChange={(e) => {
+                          setSearchTerm(e.target.value);
+                        }}
+                      />
+                      {/* <FaSearch className='-ml-9'/> */}
+                      <button type="submit" className=" text-white relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleReset(e) }}>
+                        Send
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -121,15 +135,15 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                         <div>
                           <div className="container mx-auto w-1/2 p-1 relative">
                             <div className="min-w-[160px] min-h-[260px] max-h-[360px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
-                             onMouseEnter={() => showTitle(index)}
-                             onMouseLeave={hideButton}
+                              onMouseEnter={() => showTitle(index)}
+                              onMouseLeave={hideButton}
                             >
                               {/* <div className="pl-2 pr-2 items-center"> */}
                               <img
                                 className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                                 // component="img"
                                 // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                alt="Loading Movie"
+                                alt="No Movie Image"
                                 src={movie.Poster}
                                 onClick={() => {
                                   // console.log("something")
@@ -138,15 +152,16 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                               />
                               {/* <div className="text-white">{movie.Title}</div> */}
                               <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
-                              onClick={() => {
-                                // console.log("something")
-                                saveMovie(movie.Poster, movie.Title, setStar)}}>
-                              
-                                <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none'  }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
-                                
+                                onClick={() => {
+                                  // console.log("something")
+                                  saveMovie(movie.Poster, movie.Title, setStar)
+                                }}>
+
+                                <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
+
+                                </div>
                               </div>
-                              </div>
-                               
+
                               {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
                             </div>
