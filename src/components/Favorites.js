@@ -44,7 +44,7 @@ function Favorites({favorites, showButton, hideButton, deleteMovie, see}) {
                                             className="min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2"
                                             component="img"
                                             // sx={{ maxHeight: 450, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                            alt="The house from the offer."
+                                            alt="Loading"
                                             src={movs.movPoster}
                                             onClick={() => { deleteMovie(movs.id, favorites) }}
 

@@ -8,7 +8,7 @@ import { TbHeartOff } from 'react-icons/tb'
 
 function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites}) {
   const [name, setName] = useState([]);
-  // const [star, setStar] = useState(null);
+  const [star, setStar] = useState(null);
   
   //Slider for Movies List
 
@@ -41,9 +41,11 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
 
   // setting a string to use for my search term
 
-  useEffect(() => {
-    // console.log(favorites);
-  }, [favorites])
+  // useEffect(() => {
+    
+  // }, [favorites])
+
+  // console.log(favorites);
 
   const names = async (title) => {
 
@@ -54,9 +56,8 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
     console.log(data.Search);
 
     setName(data.Search);
-    setSearchTerm('')
-
-  }
+    setSearchTerm('');
+    }
 
 
 
@@ -128,26 +129,25 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites})
                                 className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                                 // component="img"
                                 // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                alt="No Movie Image"
+                                alt="Loading Movie"
                                 src={movie.Poster}
                                 onClick={() => {
-                                  console.log("something")
-                                  saveMovie(movie.Poster, movie.Title)
+                                  // console.log("something")
+                                  saveMovie(movie.Poster, movie.Title, setStar)
                                 }}
                               />
                               {/* <div className="text-white">{movie.Title}</div> */}
                               <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
                               onClick={() => {
-                                console.log("something")
-                                saveMovie(movie.Poster, movie.Title)}}>
+                                // console.log("something")
+                                saveMovie(movie.Poster, movie.Title, setStar)}}>
                               
                                 <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none'  }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
                                 
                               </div>
                               </div>
-
-                              {/* {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)} */}
-
+                               
+                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
 
                             </div>
                           </div>
