@@ -82,14 +82,14 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
             >
               MOVIE LIST
             </h1>
-            <div>
-              <div className="mt-10 p-16 md:w-96 mx-auto">
-                <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-                  <form onSubmit={handleSubmit(onSubmit)} className="input">
-                    <div class="flex justify-between">
+            {/* <div> */}
+              <div className="mt-10 p-16 h-3/6 grid place-content-center">
+                {/* <div className="relative mb-4 flex w-full flex-wrap items-stretch"> */}
+                  <form onSubmit={handleSubmit(onSubmit)} className="input w-96">
+                    <div className="" >
                       <input
                         // className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
-                        className="bg-slate-190 hover:bg-red-200 h-8 w-full p-3"
+                        className="bg-slate-190 h-10 w-80 p-3"
                         type="search"
                         name="movie"
                         value={searchTerm}
@@ -100,25 +100,25 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                         })}
                         error={!!errors?.email}
                         helperText={errors?.email ? errors.email.message : null}
-                        sx={{ ml: 1, mt: 1, p: 2, }}
+                        // sx={{ ml: 1, mt: 1, p: 2, }}
                         onChange={(e) => {
                           setSearchTerm(e.target.value);
                         }}
                       />
                       {/* <FaSearch className='-ml-9'/> */}
-                      <button type="submit" className=" text-white relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleReset(e) }}>
+                      <button type="submit" className="bg-transparent hover:bg-rose-700 text-white font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent rounded ml-1" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleReset(e) }}>
                         Send
                       </button>
                     </div>
                   </form>
-                </div>
+                {/* </div> */}
               </div>
-            </div>
+            {/* </div> */}
             {/* Calling my function that runs the api call and sets it to what the user searches on button click            */}
             {/* </div> */}
             {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
               <div>
-                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click a movie to add to your favorites</div> :
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click on a movie's title to add to favorites</div> :
                   <div className="items-center">
                     <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
                       {/* </div> */}
@@ -145,29 +145,37 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                                 // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                                 alt="No Movie Image"
                                 src={movie.Poster}
-                                onClick={() => {
-                                  // console.log("something")
-                                  saveMovie(movie.Poster, movie.Title, setStar)
-                                }}
+                              // onClick={() => {
+                              //   // console.log("something")
+                              //   saveMovie(movie.Poster, movie.Title, setStar)
+                              // }}
                               />
                               {/* <div className="text-white">{movie.Title}</div> */}
-                              <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
+                              {/* <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
                                 onClick={() => {
                                   // console.log("something")
                                   saveMovie(movie.Poster, movie.Title, setStar)
-                                }}>
-
-                                <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="text-white mb-2 p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0">{movie.Title}
-
-                                </div>
+                                }}> */}
+                              <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
+                              <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="">
+                                <button className="lost text-white mb-2 p-2"
+                                  onClick={() => {
+                                    // console.log("something")
+                                    saveMovie(movie.Poster, movie.Title, setStar)
+                                  }}>
+                                    <div id="yo" className="text-rose-500">ADD TO FAVORITES</div>
+                                    {movie.Title}
+                                </button>
                               </div>
-
-                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
-
+                              </div>
                             </div>
-                          </div>
 
+                            {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
+
+                          </div>
                         </div>
+
+                        // </div>
                       )))
 
                       :
