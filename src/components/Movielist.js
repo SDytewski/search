@@ -85,11 +85,11 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
             {/* <div> */}
               <div className="mt-10 p-16 h-3/6 grid place-content-center">
                 {/* <div className="relative mb-4 flex w-full flex-wrap items-stretch"> */}
-                  <form onSubmit={handleSubmit(onSubmit)} className="input w-96">
+                  <form onSubmit={handleSubmit(onSubmit)} className="input w-full">
                     <div className="" >
                       <input
                         // className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-white focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none white:border-neutral-600 white:text-neutral-200 dark:placeholder:text-white-200 dark:focus:border-primary"
-                        className="bg-slate-190 h-10 w-80 p-3"
+                        className="bg-slate-190 h-10 w-96 p-3"
                         type="search"
                         name="movie"
                         value={searchTerm}
