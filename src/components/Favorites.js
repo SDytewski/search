@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import * as React from 'react';
-import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 const slideFavoriteLeft = () => {
     var slider = document.getElementById('sliderFav')
-    slider.scrollLeft = slider.scrollLeft - 500;
+    slider.scrollLeft = slider.scrollLeft - 200;
   }
 
   const slideFavoriteRight = () => {
     var slider = document.getElementById('sliderFav')
     slider.scrollLeft = slider.scrollLeft +
-      500;
+      200;
   }
 
 function Favorites({favorites, showButton, hideButton, deleteMovie, see}) {
@@ -47,16 +46,12 @@ function Favorites({favorites, showButton, hideButton, deleteMovie, see}) {
                                             alt="Loading"
                                             src={movs.movPoster}
                                             onClick={() => { deleteMovie(movs.id, favorites) }}
-
                                         />
-
                                         <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
                                             <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="">
 
                                                 <button className="lost text-white mb-2 p-2" onClick={() => { deleteMovie(movs.id, favorites) }}><div className="text-rose-500">DELETE</div> {movs.movTitle}</button>
-
-
-                            
+                 
                                             </div>
                                         </div>
                                     </div>
