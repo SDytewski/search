@@ -50,7 +50,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
 
   const names = async (title) => {
 
-    const response = await fetch(`https://www.omdbapi.com/?s=${title}&apikey=32e96066`);
+    const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
     const data = await response.json();
     //fetching my data from the API and making it dynamic with the title parameter
 
