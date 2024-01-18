@@ -107,7 +107,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
             {/* </div> */}
             {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
               <div>
-                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click on image button to add a movie to favorites</div> :
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click the button on a poster to add a movie to your favorites</div> :
                   <div className="items-center">
                     <div align="center" id="banner" className="text-white text-4xl p-4 m-5 bg-rose-600 items-center">{banner}
                       {/* </div> */}

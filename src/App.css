@@ -1,5 +1,11 @@
 /* Styling for header */
 
+
+.App {
+  overflow-x: hidden;
+  height: '100vh'
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
