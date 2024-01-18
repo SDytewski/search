@@ -27,7 +27,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
 
   const inputEl = useRef();
 
-  const style = { color: "pink", fontSize: "1.5em", stroke: "black", strokeWidth: "5" }
+  const style = { color: "#ff0000", fontSize: "1.5em", stroke: "black", strokeWidth: "5", borderWidth:"5", border:"black" }
 
   const [searchTerm, setSearchTerm] = useState('');
   // const [favorites, setFavorites] = useState([]);
@@ -98,7 +98,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                         }}
                       />
                       {/* <FaSearch className='-ml-9'/> */}
-                      <button type="submit" className="bg-transparent hover:bg-rose-700 text-white font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent rounded ml-1" id="button-addon3" sx={{ ml: 2, mt: 3, p: 2, }} onClick={(e) => { names(searchTerm); handleReset(e) }}>
+                      <button type="submit" className="bg-transparent hover:bg-rose-700 text-white font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent rounded ml-1" id="button-send" onClick={(e) => { names(searchTerm); handleReset(e) }}>
                         Send
                       </button>
                     </div>
@@ -110,9 +110,9 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
             {/* </div> */}
             {name?.length === 0 ? (<h1 align="center" className="text-white text-4xl p-8">Search for a Movie!</h1>) :
               <div>
-                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click on a movie's title to add to favorites</div> :
+                {banner == "" ? <div align="center" id="banner" className="text-white text-4xl p-4 m-5 items-center">Click on image button to add a movie to favorites</div> :
                   <div className="items-center">
-                    <div align="center" id="banner" className="text-black text-4xl p-4 m-5 bg-red-400 items-center">{banner}
+                    <div align="center" id="banner" className="text-white text-4xl p-4 m-5 bg-rose-600 items-center">{banner}
                       {/* </div> */}
 
                     </div>
@@ -132,11 +132,11 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                             >
                               {/* <div className="pl-2 pr-2 items-center"> */}
                               <img
-                                className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                                className="text-white min-w-[160px] min-h-[260px] max-h-[260px] inline-block cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0 border-2 border-white"
                                 // component="img"
                                 // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
-                                alt="No Movie Image"
-                                src={movie.Poster}
+                                
+                                src={(movie.Poster !=="N/A") ? movie.Poster:"https://www.movienewsletters.net/photos/000000H1.jpg"}
                               // onClick={() => {
                               //   // console.log("something")
                               //   saveMovie(movie.Poster, movie.Title, setStar)
@@ -148,15 +148,16 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                                   // console.log("something")
                                   saveMovie(movie.Poster, movie.Title, setStar)
                                 }}> */}
+                                 {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style} id="heart"> <AiFillHeart /> </div> : (<div align="center" className=""></div>)}
                               <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
-                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style} id="heart"> <AiFillHeart /> </div> : (<div align="center" className="p-3"></div>)}
+                             
                               <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="">
                                 <button className="lost text-white mb-2 p-2"
                                   onClick={() => {
                                     // console.log("something")
                                     saveMovie(movie.Poster, movie.Title, setStar)
                                   }}>
-                                    <div id="yo" className="text-rose-500">ADD TO FAVORITES</div>
+                                    <div id="yo" className="text-rose-500">ADD FAVORITE</div>
                                 </button>
                               </div>
                               </div>

@@ -125,6 +125,7 @@ form {
 }
 
 
+
 /* Styling poster for favorites and movies buttons */
 
 
@@ -147,7 +148,7 @@ form {
   
 }
 
-.lost:hover{
+.lost:hover {
   opacity: 1;
   overflow: visible; 
   white-space: normal;
@@ -158,4 +159,11 @@ form {
   position: absolute; 
   bottom:25px; 
   left:25px; 
+}
+
+
+@media screen and (max-width: 658px) {
+  #button-send {
+    margin-top: 10px;
+  }
 }
