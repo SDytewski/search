@@ -16,7 +16,6 @@ const slideFavoriteRight = () => {
 function Favorites({ favorites, showButton, hideButton, deleteMovie, see }) {
 
     return (
-        // <div class="ml-5 mr-5">
             <div class="p-9">
                 <h1 align="center" className="text-white text-4xl p-8">Favorites</h1>
                 <div className='relative flex items-center'>
@@ -60,9 +59,6 @@ function Favorites({ favorites, showButton, hideButton, deleteMovie, see }) {
                     <div className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideFavoriteRight}> <MdChevronRight size={40} color="white" /> </div>
                 </div>
             </div>
-        // </div>
-
-
     );
 }
 
