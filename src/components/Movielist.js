@@ -3,9 +3,6 @@ import * as React from 'react';
 import { set, useForm } from "react-hook-form";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { AiFillHeart } from 'react-icons/ai';
-import { TbHeartOff } from 'react-icons/tb'
-// import { FaSearch } from "react-icons/fa";
-
 
 function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }) {
   const [name, setName] = useState([]);
