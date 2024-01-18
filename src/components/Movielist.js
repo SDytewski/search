@@ -40,14 +40,6 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
 
   const onSubmit = () => setSearchTerm(names);
 
-  // setting a string to use for my search term
-
-  // useEffect(() => {
-
-  // }, [favorites])
-
-  // console.log(favorites);
-
   const names = async (title) => {
 
     const response = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=32e96066`);
@@ -157,6 +149,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                                   saveMovie(movie.Poster, movie.Title, setStar)
                                 }}> */}
                               <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
+                              {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style} id="heart"> <AiFillHeart /> </div> : (<div align="center" className="p-3"></div>)}
                               <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="">
                                 <button className="lost text-white mb-2 p-2"
                                   onClick={() => {
@@ -164,13 +157,12 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                                     saveMovie(movie.Poster, movie.Title, setStar)
                                   }}>
                                     <div id="yo" className="text-rose-500">ADD TO FAVORITES</div>
-                                    {movie.Title}
                                 </button>
                               </div>
                               </div>
                             </div>
 
-                            {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style}> <AiFillHeart /> </div> : (<div align="center" style={style}><TbHeartOff /></div>)}
+                          
 
                           </div>
                         </div>

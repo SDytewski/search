@@ -1,18 +1,5 @@
-/* .App {
-  text-align: center;
-} */
-/* #row {
-	overflow-x: auto;
-	flex-wrap: nowrap;
-} */
-
-/* .background {
-  background-image: url("./img/theatre.jpg");
-  background-size: cover;
-} */
-
-
-
+/* Styling for header */
+ 
 
 .App-logo {
   height: 40vmin;
@@ -41,11 +28,6 @@
 }
 
 
-
-/* .img {
-  min-width: 800px !important;
-} */
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -54,92 +36,6 @@
     transform: rotate(360deg);
   }
 }
-
-/* .example
-{
-   
-    max-height: 500px;
-    
-   
-   
-} */
-
-/* .poster {
-  max-width: 100%;
-} */
-
-/* img {
-  max-height: 500px;
-} */
-
-/* .carousel {
-display: flex;
-justify-content: center;
-} */
-
-/* .media {
-  display: flex;
-  flex-direction: row;
-  width: 200px;
-  padding: 5px;
-  margin: 5px 0;
-  background-color: #282c34;
-  position: relative;
-
-} */
-
-
-/* .example:hover {
- 
-  background-color: black;
-} */
-/* img {
-  justify-content: left;
-
-  min-height: 330px !important;
-  margin-left: 5px !important;
-  width: 200px;
-} */
-/* .img {
-  width: 50%;
-} */
-
-/* .card { */
-  /* text-align: left !important; */
-  /* display: flex;
-  flex: 1; */
-/* } */
-
-/* .card {
-  width: 50%;
-} */
-
-/* .notdisplayed {
-  display: none;
-}
-
-.displayed {
-  display: block;  
-} */
-
-  
-/* #sign{
-  /* box-shadow: 10px 10px 10px 10px rgb(164, 227, 227);
-  border-radius: 5px;
-  border: 10px dotted #ffff7c;
-  outline: 2px solid #000000; */
-
-
-  /* background: 
-  linear-gradient(90deg, #f7f790 80%, transparent 0) repeat-x,
-  linear-gradient(90deg, #f7f790 80%, transparent 0) repeat-x,
-  linear-gradient(0deg, #f7f790 80%, transparent 0) repeat-y,
-  linear-gradient(0deg, #f7f790 80%, transparent 0) repeat-y;
-background-size: 4px 5px, 4px 5px, 5px 4px, 5px 4px;
-background-position: 0 0, 0 100%, 0 0, 100% 0;
-animation: linearGradientMove .3s infinite linear;
-background-color: black; */
-  
  
 #sign {
   position: relative;
@@ -206,52 +102,14 @@ background-color: black; */
   background: rgba(255, 215, 0, .5);
 }
 
-  /* position: absolute; */
-  /* top: 200px;
-  left: 200px; */
- 
-  /* display: inline-block;
-  /* width: 200px; */
-
-
-
-/* #banner
-{
-  animation: wordAnimation 2s linear infinite;
-}
-@keyframes wordAnimation {
-  0% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0; transform: scale(0); }
-} */
-
-
  
 
 form {
   border: none;
 }
-@media (max-width: 550px) {
-  /* .media {
-    width: 46%;
-  } */
 
 
-}
-
-/* #banner {
-  animation: FadeAnimation 4s ease-in .1s forwards;
-}
-@keyframes FadeAnimation {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-} */
+/* Banner */
 
 #banner{
   /* display: flex; */
@@ -265,6 +123,11 @@ form {
  
   font-size: 22px;
 }
+
+
+/* Styling poster for favorites and movies buttons */
+
+
 .lost {
   max-width: 150px;
   border: 1px solid black;
@@ -288,37 +151,11 @@ form {
   opacity: 1;
   overflow: visible; 
   white-space: normal;
-  height:auto;  /* just added this line */
-  
+  height:auto;  
 }
 
-/* input {
-  width: 400px;
-} */
-
-/* #coast {
-  max-width: 150px;
-  border: 1px solid black;
-  word-wrap: break-word;
-  background-color: #000000;
-  border: none; */
-
-  /* padding: 16px 32px; */
-  /* text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.6s;
-  display: block;
-
-  
-} */
-
-/* #coast:hover{
-  opacity: 1;
-  overflow: visible; 
-  white-space: normal;
-  height:auto;  */
-   /* just added this line */
-  
-/* } */
+#heart {
+  position: absolute; 
+  bottom:25px; 
+  left:25px; 
+}

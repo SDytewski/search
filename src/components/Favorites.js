@@ -50,7 +50,7 @@ function Favorites({favorites, showButton, hideButton, deleteMovie, see}) {
                                         <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
                                             <div style={{ maxWidth: '230px', display: see === i ? 'block' : 'none' }} className="">
 
-                                                <button className="lost text-white mb-2 p-2" onClick={() => { deleteMovie(movs.id, favorites) }}><div className="text-rose-500">DELETE</div> {movs.movTitle}</button>
+                                                <button className="lost text-white mb-2 p-2" onClick={() => { deleteMovie(movs.id, favorites) }}><div className="text-rose-500">DELETE FAVORITE</div></button>
                  
                                             </div>
                                         </div>
