@@ -6,4 +6,5 @@ test('finds the movie search field', async ({ page }) => {
 
   await page.goto('https://movie-favorites-d8693.web.app/');
   await expect(movieListPage.searchInput).toBeVisible();
+  await expect(movieListPage.searchButton).toBeVisible();
 });
