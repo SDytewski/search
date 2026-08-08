@@ -4,9 +4,10 @@ export class MovieListPage {
 
     readonly page: Page;
     readonly searchInput: Locator;
-    // readonly searcHeading: Locator;
+    readonly searchHeading: Locator;
     readonly searchButton: Locator;
-    // readonly moviePosters: Locator;
+    readonly moviePosters: Locator;
+
 
     constructor(page: Page) {
 
@@ -17,8 +18,13 @@ export class MovieListPage {
         //  Codegen await page.getByRole('searchbox', { name: 'Search for a Movie' }).click();
         this.searchButton = page.getByRole('button', {
             name: 'Send',
-            });
+        });
         // Codegen await page.getByRole('button', { name: 'Send' }).click()
+        this.moviesHeading = page.getByRole('heading', {
+            name: 'Movies',
+        });
+
+        this.moviePosters = page.locator('#slider img');
     }
 
     async searchForMovie(title: string) {
