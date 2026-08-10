@@ -4,7 +4,7 @@ export class MovieListPage {
 
     readonly page: Page;
     readonly searchInput: Locator;
-    readonly searchHeading: Locator;
+    readonly moviesHeading: Locator;
     readonly searchButton: Locator;
     readonly moviePosters: Locator;
 
