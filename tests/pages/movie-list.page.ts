@@ -7,6 +7,7 @@ export class MovieListPage {
     readonly moviesHeading: Locator;
     readonly searchButton: Locator;
     readonly moviePosters: Locator;
+    
 
 
     constructor(page: Page) {
@@ -28,6 +29,6 @@ export class MovieListPage {
     }
 
     async searchForMovie(title: string) {
-        await this.searchInput.fill(title)
+        await this.searchInput.fill(title);
     };
 }
