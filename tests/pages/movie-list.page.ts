@@ -1,4 +1,4 @@
-import type { Locator, Page, Response } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export class MovieListPage {
 
@@ -7,7 +7,7 @@ export class MovieListPage {
     readonly moviesHeading: Locator;
     readonly searchButton: Locator;
     readonly moviePosters: Locator;
-    
+
 
 
     constructor(page: Page) {
@@ -27,8 +27,13 @@ export class MovieListPage {
 
         this.moviePosters = page.locator('#slider img');
     }
-
     async searchForMovie(title: string) {
         await this.searchInput.fill(title);
-    };
+        await this.searchButton.click();
+    }
+    movieTitle(title: string): Locator {
+        return this.page
+            .locator('#slider')
+            .getByText(title, { exact: true });
+    }
 }

@@ -4,8 +4,8 @@ import { MovieListPage } from '../pages/movie-list.page';
 test('searching for a movie', async ({ page }) => {
   const movieListPage = new MovieListPage(page);
 
-  await page.goto('https://movie-favorites-d8693.web.app/');
+  await page.goto('http://localhost:3000/');
   await movieListPage.searchForMovie('star wars');
-  await movieListPage.searchButton.click();
-  await expect(movieListPage.moviePosters).toHaveCount(10);
+  await expect(movieListPage.movieTitle('Star Wars: Episode IV - A New Hope')).toBeVisible();
+  await page.pause();
 });

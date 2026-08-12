@@ -123,7 +123,7 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                       (name.map((movie, index) => (
                         <div>
                           <div className="container mx-auto w-1/2 p-1 relative">
-                            <div className="min-w-[160px] min-h-[260px] max-h-[360px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
+                            <div className="relative min-w-[160px] min-h-[260px] max-h-[360px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 shrink-0"
                               onMouseEnter={() => showTitle(index)}
                               onMouseLeave={hideButton}
                             >
@@ -134,19 +134,22 @@ function Movielist({ view, showTitle, hideButton, saveMovie, banner, favorites }
                                 // sx={{ maxHeight: 200, width: '100%', display: 'flex', flexDirection: 'row' }}
                                 
                                 src={(movie.Poster !=="N/A") ? movie.Poster:"https://www.movienewsletters.net/photos/000000H1.jpg"}
+                                alt={movie.Title}
                               // onClick={() => {
                               //   // console.log("something")
                               //   saveMovie(movie.Poster, movie.Title, setStar)
                               // }}
                               />
-                              {/* <div className="text-white">{movie.Title}</div> */}
+                              <div className="absolute bottom-2 left-2 right-2 z-10 overflow-hidden text-ellipsis whitespace-nowrap bg-black/70 px-2 py-1 text-center text-sm text-white">
+                                {movie.Title}
+                              </div>
                               {/* <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center"
                                 onClick={() => {
                                   // console.log("something")
                                   saveMovie(movie.Poster, movie.Title, setStar)
                                 }}> */}
                                  {favorites.some(i => i.movPoster.includes(movie.Poster)) ? < div align="center" style={style} id="heart"> <AiFillHeart /> </div> : (<div align="center" className=""></div>)}
-                              <div class="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
+                              <div className="absolute w-full h-full top-0 bottom-0 left-0 right-0 flex items-center justify-center p-5">
                              
                               <div style={{ maxWidth: '230px', display: view === index ? 'block' : 'none' }} id="coast" className="">
                                 <button className="lost text-white mb-2 p-2"
