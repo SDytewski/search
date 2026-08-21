@@ -7,8 +7,7 @@ export class MovieListPage {
     readonly moviesHeading: Locator;
     readonly searchButton: Locator;
     readonly moviePosters: Locator;
-
-
+    readonly movieListHeading: Locator;
 
     constructor(page: Page) {
 
@@ -24,6 +23,10 @@ export class MovieListPage {
         this.moviesHeading = page.getByRole('heading', {
             name: 'Movies',
         });
+        this.movieListHeading = page.getByRole('heading', {
+            name: 'Movie List',
+        });
+
 
         this.moviePosters = page.locator('#slider img');
     }
