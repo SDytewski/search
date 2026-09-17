@@ -11,3 +11,10 @@ test('searching for a movie', async ({ page }) => {
 
   // await page.pause();
 });
+
+ test('submits a movie search by pressing Enter', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+  const movieListPage = new MovieListPage(page);
+  await movieListPage.searchInput.fill('star wars');
+
+ });
